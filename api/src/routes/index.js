@@ -2,81 +2,18 @@ const { Router } = require("express");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const { Pokemon, Type } = require("../db");
-
-const axios = require("axios");
+const { allPokes } = require('../controllers/utils');
 const router = Router();
 
-const getPokesFromApi = async () => {
-  const callingApi = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon?limit=10"
-  );
-  // console.log(callingApi.data.results);
 
-  const promeses = callingApi.data.results.map((element) => {
-    return axios.get(element.url);
-  });
-  const arrayPokes = await Promise.all(promeses)
-    // ANDA BIEN
-    //   const arrayPokes =  Promise.all(
-    //     callingApi.data.results.map((element) => {
-    //       return axios.get(element.url);
-    //     })
-    //   )
-    .then((pokearray) => {
-      // pokearray.forEach(el => console.log({el : el.data.name}))
-      const pokeArray = pokearray.map((element) => {
-        return {
-          id: element.data.id,
-          name: element.data.name,
-          hp: element.data.stats[0].base_stat,
-          attack: element.data.stats[1].base_stat,
-          defense: element.data.stats[2].base_stat,
-          speed: element.data.stats[5].base_stat,
-          height: element.data.height,
-          weight: element.data.weight,
-          types: element.data.types.map((element) => element.type),
-          img: element.data.sprites.other.home.front_default,
-          createdInDataBase: false,
-        };
-      });
-      // console.log(pokeArray);
-      return pokeArray;
-    });
-  // console.log(arrayPokes);
-  return arrayPokes;
-};
-
-// let p1 = getPokesFromApi();
-// p1.then((result) => console.log(result)); // esto me devuelve el valor que retorna la promesa
-// // console.log(getPokesFromApi()); // esto me devuelve undefined porque se ejecuta antes de que la promesa se resuelva
-
-const getPokesFromDB = async () => {
-  const pokes = await Pokemon.findAll({
-    include: Type,
-    // include : {
-    //   model : Type ,
-    //   atributes : ['name'] ,
-    //   through : {
-
-    //   }
-    // }
-  });
-  return pokes;
-};
-
-const allPokes = async () => {
-  const pokesFromApi = await getPokesFromApi();
-  const pokesFromDB = await getPokesFromDB();
-  return pokesFromApi.concat(pokesFromDB);
-};
 
 router.get("/", async (req, res) => {
   const { qname } = req.query;
   console.log(qname);
-  let totalPokes = await allPokes();
+  const totalPokes = await allPokes();
   // console.log(totalPokes);
   if (qname) {
-    let pokeName = await totalPokes.filter(
+    const pokeName = await totalPokes.filter(
       (element) => element.name.toLowerCase() === qname.toLowerCase()
     );
     pokeName.length
@@ -96,14 +33,21 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:idPokemon", async (req, res) => {
-  const { idPokemon } = req.params;
-  let totalPokes = await allPokes();
+  const  idPokemon  = req.params.idPokemon;
+  const totalPokes = await allPokes();
   // console.log(totalPokes);
-  let pokeName = await totalPokes.find(
-    (element) => element.id === Number(idPokemon)
-  );
+  if (idPokemon.length > 9) {
+    const pokeName = await totalPokes.find(
+      (element) => element.id === (idPokemon)
+    );
+    pokeName ? res.json(pokeName) : res.status(404).send("Ese pokemon no existe");
+  }else {
+    const pokeName = await totalPokes.find(
+      (element) => element.id === Number(idPokemon)
+      );
+      pokeName ? res.json(pokeName) : res.status(404).send("Ese pokemon no existe");
+    }
   // console.log(pokeName);
-  pokeName ? res.json(pokeName) : res.status(404).send("Ese pokemon no existe");
 });
 
 router.post("/", async (req, res) => {
@@ -112,7 +56,7 @@ router.post("/", async (req, res) => {
   const typeDB = await Type.findAll({
     where : {name : types}
   })
-  console.log(typeDB);
+  // console.log(typeDB);
   await createdPoke.addType(typeDB)
   res.send(createdPoke)
 });
