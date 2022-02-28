@@ -15,13 +15,13 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    life : {
+    hp : {
       type : DataTypes.STRING, 
     },
-    strength : {
+    attack : {
       type : DataTypes.INTEGER ,
     },
-    defence : {
+    defense : {
       type : DataTypes.INTEGER , 
     }, 
     speed : { 
