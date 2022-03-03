@@ -24,6 +24,7 @@ const getPokesFromApi = async () => {
         weight: element.data.weight,
         types: element.data.types.map((element) => element.type),
         img: element.data.sprites.other.home.front_default,
+        // createdInDataBase: 'false',
         createdInDataBase: false,
       };
     });

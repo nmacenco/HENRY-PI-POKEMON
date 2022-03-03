@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     hp : {
-      type : DataTypes.STRING, 
+      type : DataTypes.INTEGER, 
     },
     attack : {
       type : DataTypes.INTEGER ,
@@ -36,6 +36,7 @@ module.exports = (sequelize) => {
     img : {
       type : DataTypes.STRING , 
       allowNull : true , 
+      defaultValue : null , 
     },
     createdInDataBase : {
       type : DataTypes.BOOLEAN , 

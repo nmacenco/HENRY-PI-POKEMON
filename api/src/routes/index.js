@@ -9,7 +9,7 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   const { qname } = req.query;
-  console.log(qname);
+  // console.log(qname);
   const totalPokes = await allPokes();
   // console.log(totalPokes);
   if (qname) {
@@ -22,13 +22,14 @@ router.get("/", async (req, res) => {
   } else {
     const dataAsked = totalPokes.map((element) => {
       const Poke = {
+        id : element.id ,
         name: element.name,
         types: element.types,
         img: element.img,
       };
       return Poke;
     });
-    res.send(dataAsked);
+    res.send(totalPokes);
   }
 });
 
