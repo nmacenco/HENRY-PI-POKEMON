@@ -40,25 +40,23 @@ export default function CreatePoke() {
             [e.target.name]: e.target.value,
         })
     );
-    // console.log({ errors });
     // console.log({input : input});
-}
-function handleOnBlur(e) {
-    console.log(input.name.length);
-    // setErrors(
-        //     validate({
-            //         ...errors,
-            //         [e.target.name]: e.target.value,
-            //     })
-            // );
-}
+  }
+  function handleOnBlur(e) {
+  console.log({ errors });
+  console.log((e.target.value));
+  }
             
   function handleSelectType(e) {
     e.preventDefault();
-    setInput({
-      ...input,
-      types: [...input.types, e.target.value],
-    });
+    if (input.types.length < 2 ) {
+      setInput({
+        ...input,
+        types: [...input.types, e.target.value],
+      });
+    } else {
+      alert ('Se pueden seleccionar como maximo 2 tipos de pokemon')
+    }
   }
   function handleSubmit(e) {
     if (Object.keys(errors).length > 0) {
@@ -90,17 +88,17 @@ function handleOnBlur(e) {
         <label>Nombre</label>
         <input
           onChange={(e) => handleOnChange(e)}
-        //   onBlur={(e) => handleOnBlur(e)}
+          onBlur={(e) => handleOnBlur(e)}
           name={"name"}
           type="text"
           value={input.name}
           autoFocus
         />
-        {errors.name && input.name.length < 1  ? <p>{errors.name}</p> : null}
+        {errors.name  ? <p>{errors.name}</p> : null}
         <br />
         <label>Vida</label>
         <input
-        //   onBlur={(e) => handleOnBlur(e)}
+          onBlur={(e) => handleOnBlur(e)}
           onChange={(e) => handleOnChange(e)}
           name={"hp"}
           type="number"
@@ -166,7 +164,7 @@ function handleOnBlur(e) {
           type="url"
           value={input.img}
         />
-        {errors.img && input.img.length < 1 ? <p>{errors.img}</p> : null}
+        {errors.img  ? <p>{errors.img}</p> : null}
         <br />
         <label>Tipo</label>
         <select
@@ -190,9 +188,9 @@ function handleOnBlur(e) {
           input.types.map((type, index) => {
             return (
               <ul>
-                <li>
+                <li >
                   {type}
-                  <button value={type} onClick={(e) => handleOnCLickType(e)}>
+                  <button key={index} value={type} onClick={(e) => handleOnCLickType(e)}>
                     X
                   </button>
                 </li>
