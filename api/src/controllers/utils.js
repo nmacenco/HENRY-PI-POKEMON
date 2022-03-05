@@ -3,7 +3,7 @@ const axios = require("axios");
 
 const getPokesFromApi = async () => {
   const callingApi = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon?limit=10"
+    "https://pokeapi.co/api/v2/pokemon?limit=40"
   );
   // console.log(callingApi.data.results);
 

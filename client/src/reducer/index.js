@@ -8,13 +8,20 @@ const initialState = {
 };
 
 export default function rootReducer (state=initialState, action) {
+   
     switch (action.type) {
         case 'GET_ALL_POKEMONS' :
-            return {
-                ...state , 
-                pokemons : action.payload,
-                copyPokemons : action.payload
-            }
+           console.log({
+            ...state , 
+            pokemons : action.payload,
+            copyPokemons : action.payload
+             });
+        return {
+            ...state , 
+            pokemons : action.payload,
+            copyPokemons : action.payload
+            
+        }
         case 'GET_ALL_TYPES' :
             return {
                 ...state , 
@@ -30,12 +37,21 @@ export default function rootReducer (state=initialState, action) {
                 ...state, 
                 poke : action.payload 
             }
+        case 'DELETE_POKE_BY_ID' :
+        
+            return { 
+                ...state , 
+                poke : action.payload
+            }
+        
         case 'CREATE_POKE' :
             
             return { 
                 ...state , 
                
             }
+        
+ 
         case 'FILTER_BY_ORIGIN' :
             const allPokemons = state.copyPokemons ;
             const statusFiltered = action.payload === 'created' ? allPokemons.filter(poke => poke.createdInDataBase) : allPokemons.filter(poke => !poke.createdInDataBase) 
@@ -110,3 +126,4 @@ export default function rootReducer (state=initialState, action) {
         return state ; 
     }
 }
+

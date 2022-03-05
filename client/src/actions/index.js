@@ -27,7 +27,7 @@ export function getPokeByName (payload) {
     return async function (dispatch) {
         try {
             const poke = await axios.get(`http://localhost:3001/pokemons?qname=${payload}`)
-            console.log(poke.data);
+            // console.log(poke.data);
             return dispatch( {
                 type : 'GET_POKE_BY_NAME',
                 payload : poke.data
@@ -41,18 +41,35 @@ export function getPokeByName (payload) {
 export function getPokeById (id){
     return async function (dispatch) {
         try {
-            const elPoke = await axios.get(`http://localhost:3001/pokemons/${id}`)
-            console.log(elPoke.data);
-            return dispatch({
-                type : 'GET_POKE_BY_ID',
-                payload : elPoke.data ,
-            })
+         
+            if (id.length > 9 ) {
+                const elPoke = await axios.get(`http://localhost:3001/pokemons/${id}`)
+                console.log(elPoke);
+                return dispatch({
+                    type : 'GET_POKE_BY_ID',
+                    payload : elPoke.data ,
+                })
+            }else {
+                const elPoke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+                console.log(elPoke.data);
+                return dispatch({
+                    type : 'GET_POKE_BY_ID',
+                    payload : elPoke.data ,
+                })
+            }
         } catch (error) {
             console.log(error);
         }
     }
 }
-
+export function deletePokeById (){ 
+    return function (dispatch) {
+        return dispatch({
+            type : 'DELETE_POKE_BY_ID',
+            payload : {} ,
+        })
+    }
+}
 export function createPoke(payload) {
     return async function () {
         const newPoke = await axios.post('http://localhost:3001/pokemons', payload);

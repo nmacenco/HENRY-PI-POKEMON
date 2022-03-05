@@ -5,7 +5,7 @@ const { Pokemon, Type } = require("../db");
 const { allPokes } = require('../controllers/utils');
 const router = Router();
 
-
+const axios = require("axios");
 
 router.get("/", async (req, res) => {
   const { qname } = req.query;
@@ -36,18 +36,18 @@ router.get("/", async (req, res) => {
 router.get("/:idPokemon", async (req, res) => {
   const  idPokemon  = req.params.idPokemon;
   const totalPokes = await allPokes();
-  // console.log(totalPokes);
   if (idPokemon.length > 9) {
     const pokeName = await totalPokes.find(
       (element) => element.id === (idPokemon)
-    );
-    pokeName ? res.json(pokeName) : res.status(404).send("Ese pokemon no existe");
-  }else {
-    const pokeName = await totalPokes.find(
-      (element) => element.id === Number(idPokemon)
       );
       pokeName ? res.json(pokeName) : res.status(404).send("Ese pokemon no existe");
     }
+    // else {
+    //   const pokeName = await totalPokes.find(
+    //       (element) => element.id === Number(idPokemon)
+    //       );
+    //     pokeName ? res.json(pokeName) : res.status(404).send("Ese pokemon no existe");
+    // }
   // console.log(pokeName);
 });
 

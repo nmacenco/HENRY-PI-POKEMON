@@ -13,7 +13,7 @@ export default function Home() {
   const allPokemons = useSelector((state) => state.pokemons); // lo mismo que hacer el mapstatetoProps
   const allTypes =  useSelector(state => state.types)
   const [currentPage, setCurrentPage] = useState(1);
-  const [pokesPerPage] = useState(12);
+  const [pokesPerPage, setPokesPerPage] = useState(12);
   const lastPokeIndex = currentPage * pokesPerPage;
   const firstPokeIndex = lastPokeIndex - pokesPerPage;
   const pokesToRender = allPokemons.slice(firstPokeIndex, lastPokeIndex);
@@ -24,8 +24,10 @@ const paginado = (pageNum) => {
   useEffect(() => {
     dispatch(getAllPokemons()); // lo mismo que hacer mapdispatchtoprops
     dispatch(getAllTypes())
-    
-  }, [dispatch,handleClick]);
+ 
+  }, []);
+
+  
 
   function handleClick(e) {
     e.preventDefault();
@@ -95,7 +97,7 @@ const paginado = (pageNum) => {
       <div>
         <Paged
           allPokemons={allPokemons.length}
-          pokesToRender={pokesToRender.length}
+          pokesPerPage={pokesPerPage}
           paginado={paginado}
         />
       </div>
