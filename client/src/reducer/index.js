@@ -68,18 +68,18 @@ export default function rootReducer (state=initialState, action) {
             let statusAscDesc = [];
                 if ( action.payload === 'asc') 
                 statusAscDesc = allPoke.sort(function (a,b) {
-                    if (a.name > b.name) {
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) {
                         return 1;
-                    }else if ( a.name < b.name) {
+                    }else if ( a.name.toLowerCase() < b.name.toLowerCase()) {
                         return -1;
                     }
                     return 0 ; 
                 })
                 else if (action.payload === 'desc' )
                 statusAscDesc = allPoke.sort(function (a,b) {
-                    if (a.name > b.name) {
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) {
                         return -1;
-                    }else if ( a.name < b.name) {
+                    }else if ( a.name.toLowerCase() < b.name.toLowerCase()) {
                         return 1;
                     }
                     return 0 ; 

@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import {getPokeById,deletePokeById} from '../actions'
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams,Link} from 'react-router-dom'
+import {useParams,Link} from 'react-router-dom';
+import s from './styles/Detail.module.css';
 export default function Detail () {
     const dispatch = useDispatch();
     const poke = useSelector(state => state.poke)
@@ -10,7 +11,6 @@ export default function Detail () {
         dispatch(getPokeById((id)))
         
     }, [dispatch,id])
-
     function handleOnClick (e) {
         e.preventDefault()
         dispatch(deletePokeById());
@@ -18,39 +18,64 @@ export default function Detail () {
     
     return (
 
-        <div>
+        <React.Fragment >
             {
                 (Object.keys(poke).length > 0) ?
-                <div>
-                    <button onClick={(e)=> handleOnClick(e)}><Link to={'/home'}> Home</Link></button>
+                <div className={`${s.detail}`}>
+
                     {
                         poke.id.length > 9 ?
-                        <div>
-                            <img src={poke.img} alt="" width={'400px'} /> 
-                            <h1> {poke.name} </h1>
-                            <p> Vida : {poke.hp} </p>
-                            <p> Ataque : {poke.attack} </p>
-                            <p> Defensa : {poke.defense} </p>
-                            <p> Velocidad : {poke.speed} </p>
-                            <p> Peso : {poke.weight} </p>
-                            <p> Altura : {poke.height} </p>
-                            {poke.types.map((type,index) => {
-                                return (<p key={index}>{type.name}</p>)
-                            })}
+                        <div className={`${s.card}`} >
+                            <div className={`${s.homeImg}`}>
+                                <div className={`${s.buttonBox}`}>
+                                    <button className={`${s.theButton}`} onClick={(e)=> handleOnClick(e)}><Link className={`${s.link}`} to={'/home'}> Home</Link></button>
+                                </div>
+                                <div className={`${s.circle}`}></div>
+                                <img src={poke.img} alt=""  /> 
+
+                            </div>
+                            <div className={`${s.stats}`} >
+                                <h2> {poke.name} </h2>
+                                <p> Hp : {poke.hp} </p>
+                                <p> Attack : {poke.attack} </p>
+                                <p> Defense : {poke.defense} </p>
+                                <p> Speed : {poke.speed} </p>
+                                <p> Weight : {poke.weight} </p>
+                                <p> Height : {poke.height} </p>
+                                <p className={`${s.typesTitle}`}>Types </p>
+                                <div className={`${s.typesBox}`}>
+                                    {poke.types.map((type,index) => {
+                                        return (<p key={index}>{type.name}</p>)
+                                    })}
+                                </div>
+                            </div>
                         </div>
                         :
-                        <div>      
-                            <img src={poke.sprites.other.home.front_default} alt="" width={'400px'} /> 
-                            <h1> {poke.name} </h1>
-                            <p> Vida : {poke.stats[0].base_stat} </p>
-                            <p> Ataque : {poke.stats[1].base_stat} </p>
-                            <p> Defensa : {poke.stats[2].base_stat} </p>
-                            <p> Velocidad : {poke.stats[5].base_stat} </p>
-                            <p> Peso : {poke.weight} </p>
-                            <p> Altura : {poke.height} </p>
-                            {poke.types.map((type,index) => {
-                                return (<p key={index}>{type.name}</p>)
-                            })}
+                        <div className={`${s.card}`}>    
+                            <div className={`${s.homeImg}`}>
+                                <div className={`${s.buttonBox}`}>
+                                    <button className={`${s.theButton}`} onClick={(e)=> handleOnClick(e)}><Link className={`${s.link}`}  to={'/home'}> Home</Link></button>
+                                </div>
+                                <div className={`${s.circle}`}></div>
+                                <img src={poke.sprites.other.home.front_default} alt="" /> 
+                            </div>  
+                            <div className={`${s.stats}`}>
+                                <h2> {poke.name.toUpperCase()} </h2>
+                                <p> Hp : {poke.stats[0].base_stat} </p>
+                                <p> Attack : {poke.stats[1].base_stat} </p>
+                                <p> Defense : {poke.stats[2].base_stat} </p>
+                                <p> Speed : {poke.stats[5].base_stat} </p>
+                                <p> Weight : {poke.weight} </p>
+                                <p> Height : {poke.height} </p>
+                                <p className={`${s.typesTitle}`}>Types </p>
+                                <div className={`${s.typesBox}`}>
+                                    {poke.types.map((type,index) => {
+                                        return (<p key={index}>{type.type.name}</p>)
+                                    })}
+
+                                </div>
+
+                            </div>
                         </div>
                     }
 
@@ -59,6 +84,6 @@ export default function Detail () {
                 <h1>Cargando ...</h1>
 
             }
-        </div>
+        </React.Fragment>
     )
 }

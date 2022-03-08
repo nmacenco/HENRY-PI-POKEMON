@@ -1,0 +1,43 @@
+
+
+.paged{
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+}
+.paged li{
+    padding: 0 5px;
+    /* border-radius: 50%;
+    border: none ;
+    background-color: ;
+    background-image: '/images/pokeballsinfondo.png' ; */
+}
+/* .paged li button{
+    cursor: pointer;
+    position: relative;
+    padding: 4px 7px;
+    border-radius: 50%;
+    border: none ;
+    border: solid black;
+    background-color: unset ;
+    background-image: url('https://i.pinimg.com/564x/c5/41/13/c54113c4db8f30e0c28dccbda9f78c95.jpg') ; 
+    background-size: contain;
+    font-weight: 800;
+    color: transparent;
+
+} */
+.paged li button{
+    cursor: pointer;
+    position: relative;
+
+
+
+}
+.paged li button img{
+    position: absolute;
+width: 30px;
+}

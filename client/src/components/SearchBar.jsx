@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getPokeByName } from "../actions";
+
+import s from './styles/SearchBar.module.css'
+
 export default function SearchBar() {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
@@ -15,13 +18,15 @@ export default function SearchBar() {
       e.target.reset()
   }
   return (
-    <form onSubmit={(e)=> handleSubmit(e)}>
+    <form className= {`${s.theForm}`} onSubmit={(e)=> handleSubmit(e)}>
       <input 
       onChange={(e)=>handleInputChange(e)}
       type="text" 
-      placeholder="Buscar Pokemon"
+      placeholder="Find your pokemon"
       />
-      <button type="submit" >Buscar pokemon</button>
+      <button type="submit" >
+        <img src="/images/pokeballsinfondo.png" alt="pokeball" />
+      </button>
     </form>
   );
 }

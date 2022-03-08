@@ -85,7 +85,7 @@ export default function CreatePoke() {
       <h1>Creacion de pokemon</h1>
 
       <form onSubmit={(e) => handleSubmit(e)} >
-        <label>Nombre</label>
+        <label>Name</label>
         <input
           onChange={(e) => handleOnChange(e)}
           onBlur={(e) => handleOnBlur(e)}
@@ -96,7 +96,7 @@ export default function CreatePoke() {
         />
         {errors.name  ? <p>{errors.name}</p> : null}
         <br />
-        <label>Vida</label>
+        <label>Hp</label>
         <input
           onBlur={(e) => handleOnBlur(e)}
           onChange={(e) => handleOnChange(e)}
@@ -106,7 +106,7 @@ export default function CreatePoke() {
         />
         {errors.hp ? <p>{errors.hp}</p> : null}
         <br />
-        <label>Ataque</label>
+        <label>Attack</label>
         <input
           onChange={(e) => handleOnChange(e)}
           onBlur={(e) => handleOnBlur(e)}
@@ -116,7 +116,7 @@ export default function CreatePoke() {
         />
         {errors.attack   ? <p>{errors.attack}</p> : null}
         <br />
-        <label>Defensa</label>
+        <label>Defense</label>
         <input
           onChange={(e) => handleOnChange(e)}
           onBlur={(e) => handleOnBlur(e)}
@@ -126,7 +126,7 @@ export default function CreatePoke() {
         />
         {errors.defense ? <p>{errors.defense}</p> : null}
         <br />
-        <label>Velocidad</label>
+        <label>Speed</label>
         <input
           onChange={(e) => handleOnChange(e)}
           onBlur={(e) => handleOnBlur(e)}
@@ -136,7 +136,7 @@ export default function CreatePoke() {
         />
         {errors.speed ? <p>{errors.speed}</p> : null}
         <br />
-        <label>Altura</label>
+        <label>Height</label>
         <input
           onChange={(e) => handleOnChange(e)}
           onBlur={(e) => handleOnBlur(e)}
@@ -146,7 +146,7 @@ export default function CreatePoke() {
         />
         {errors.height  ? <p>{errors.height}</p> : null}
         <br />
-        <label>Peso</label>
+        <label>Weight</label>
         <input
           onChange={(e) => handleOnChange(e)}
           onBlur={(e) => handleOnBlur(e)}
@@ -156,7 +156,7 @@ export default function CreatePoke() {
         />
         {errors.weight  ? <p>{errors.weight}</p> : null}
         <br />
-        <label>Imagen</label>
+        <label>Image</label>
         <input
           onChange={(e) => handleOnChange(e)}
           onBlur={(e) => handleOnBlur(e)}
@@ -166,7 +166,7 @@ export default function CreatePoke() {
         />
         {errors.img  ? <p>{errors.img}</p> : null}
         <br />
-        <label>Tipo</label>
+        <label>Type</label>
         <select
           name={"types"}
           defaultValue={""}

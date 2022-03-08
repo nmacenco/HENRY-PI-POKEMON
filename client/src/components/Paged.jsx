@@ -1,5 +1,6 @@
 import React from 'react' ;
 
+import s from './styles/Paged.module.css'
 
 export default function Paged ({allPokemons,pokesPerPage,paginado}) {
     const pageNumbers = [] ;
@@ -7,17 +8,23 @@ export default function Paged ({allPokemons,pokesPerPage,paginado}) {
         pageNumbers.push(i)
     }
     return (
-        <nav>
-            <ul>
+        <React.Fragment>
+            <ul className= {`${s.paged}`}>
                 {   pageNumbers &&
                     pageNumbers.map( num => {return (
                         <li key={num}>
-                            <a  onClick={()=> paginado(num)} >{num}</a>
+                            <button  onClick={()=> paginado(num)} >
+                                {num}
+                                {/* <img src="/images/pokeballsinfondo.png" alt="pokeball" /> */}
+                                </button>
+                            
+
+
                         </li>)}
                     )
                 }
             </ul>
-        </nav>
+        </React.Fragment>
 
     )
 }

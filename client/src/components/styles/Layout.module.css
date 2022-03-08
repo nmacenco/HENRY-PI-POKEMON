@@ -1,0 +1,150 @@
+.background{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+
+
+.imgLayout {
+     width: 100vw;
+     /* height: 100vh; */
+     /* width: 430px; */
+     max-width: 430px; 
+     position: absolute;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}
+
+.imgLayout img {
+    width: 100%;
+    margin-top: 10px;
+}
+.link {
+position: absolute;
+left: calc( (100vw - 120px)/2);
+bottom: 40vh;
+border-radius: 15px;
+cursor: pointer;
+/* height: 20px;
+width: 170px; */
+/* margin-bottom: 150px; */
+}
+
+
+.layoutButton {
+    cursor: pointer;
+    padding: 10px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 12px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 500ms;
+    overflow: hidden;
+   }
+   
+   .layoutButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color:rgb(219, 23, 25);
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+   }
+   
+   .layoutButton:hover {
+    color: #e8e8e8;
+   }
+   
+   .layoutButton:hover::before {
+    width: 100%;
+   }
+.redColor {
+    width: 100vw;
+    /* height: 56.2vh; */
+    height: 326.5px;
+    background-color: rgb(219, 23, 25);
+} 
+.blackColor {
+    width: 100vw;
+    height: 41.7px;
+    background-color: black;
+
+}
+.whiteColor{
+    width: 100vw;
+    /* height: 44.4vh; */
+    background-color: white;
+}
+
+@media (min-width: 430px) { 
+    .imgLayout {
+        
+        left: calc( (100vw - 430px)/2);
+    }
+    .link {
+        left: calc( (100vw - 130px)/2);
+        bottom: 30vh;
+
+    }
+    .layoutButton {
+        cursor: pointer;
+        padding: 15px 25px;
+        border: unset;
+        border-radius: 15px;
+        color: #212121;
+        z-index: 1;
+        background: #e8e8e8;
+        position: relative;
+        font-weight: 1000;
+        font-size: 17px;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        transition: all 500ms;
+        overflow: hidden;
+       }
+}
+@media (min-width: 1200px) {
+    .link {
+        left: calc( (100vw - 130px)/2);
+        bottom: 20vh;
+
+    }
+}
+@media (min-width: 1400px) { 
+    .imgLayout {
+        max-width: 550px; 
+        left: calc( (100vw - 550px)/2);
+   }
+
+    .redColor {
+        height: 416px;
+    } 
+    .blackColor {
+        height: 52px;
+    }
+    .link {
+        position: absolute;
+        left: calc( (100vw - 140px)/2);
+        bottom: 25vh;
+    }
+}
+
+
+
