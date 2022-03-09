@@ -16,24 +16,24 @@ export function validate (input) {
     errors.hp = 'HP should be a number between 1 and 60'
   }
   if (!input.attack) {
-    errors.attack = 'attack is required' ;
+    errors.attack = 'Attack is required' ;
   } ;
   if (!input.defense) {
-    errors.defense = 'defense is required' ;
+    errors.defense = 'Defense is required' ;
   } ;
   if (!input.speed) {
-    errors.speed = 'speed is required' ;
+    errors.speed = 'Speed is required' ;
   } ;
   if (!input.height) {
-    errors.height = 'height is required' ;
+    errors.height = 'Height is required' ;
   } ;
   if (!input.weight) {
-    errors.weight = 'weight is required' ;
+    errors.weight = 'Weight is required' ;
   } ;
   if (!input.img) {
-    errors.img = 'img is required' ;
+    errors.img = 'Img is required' ;
   } else if (!/^(ftp|http|https):[^ "]+$/.test(input.img.trim())){
-    errors.img = 'img should be a url '
+    errors.img = 'Img should be a url '
   }
 
   return errors ;

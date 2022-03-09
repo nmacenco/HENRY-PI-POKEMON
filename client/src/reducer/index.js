@@ -90,7 +90,7 @@ export default function rootReducer (state=initialState, action) {
 
             }
         case 'FILTER_BY_STRENGTH' :
-            const allPokes = state.pokemons ;
+            const allPokes = state.copyPokemons ;
             let statusStrength = [];
                 if ( action.payload === 'weak') 
                 statusStrength = allPokes.sort(function (a,b) {

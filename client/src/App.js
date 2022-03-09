@@ -3,6 +3,7 @@ import Layout from './components/Layout.jsx' ;
 import Home from './components/Home.jsx' ;
 import CreatePoke from './components/CreatePoke.jsx' ;
 import Detail from './components/Detail.jsx' ;
+import Error from './components/404.jsx'
 import s from './App.module.css' ;
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
         <Route path = '/home' element = {<Home/>} />
         <Route path = '/detail/:id' element = {<Detail/>} />
         <Route path = '/createPoke' element = {<CreatePoke/>} />
+        <Route path = '/*' element = {<Error/>} />
+
       </Routes> 
     </div>
   );

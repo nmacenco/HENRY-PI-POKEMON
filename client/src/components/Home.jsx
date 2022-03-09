@@ -9,12 +9,14 @@ import {
   getAllTypes,
   filterByTypes,
 } from "../actions";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import Card from "./Card";
 import Paged from "./Paged";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import s from "./styles/Home.module.css";
+import Loading from "./Loading";
+import Nav from './Nav'
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -34,10 +36,10 @@ export default function Home() {
     dispatch(getAllTypes());
   }, []);
 
-  function handleClick(e) {
-    // e.preventDefault();
-    dispatch(getAllPokemons());
-  }
+  // function handleClick(e) {
+  //   // e.preventDefault();
+  //   dispatch(getAllPokemons());
+  // }
 
   function handleFilterOrigin(e) {
     e.preventDefault();
@@ -63,24 +65,23 @@ export default function Home() {
   }
   return (
     <div className={`${s.home}`}>
-      <nav>
+      <Nav></Nav>
+      {/* <nav>
         <div className={`${s.searchbar}`}>
           <SearchBar></SearchBar>
         </div>
         <div className={`${s.aboutCreate}`}>
           <Link className={`${s.about}`} to="/about">
-            {" "}
-            About Me{" "}
+            About Me
           </Link>
           <Link className={`${s.create}`} to="/createPoke">
-            {" "}
-            Create Pokemon{" "}
+            Create Pokemon
           </Link>
           <button className={`${s.reload}`} onClick={(e) => handleClick(e)}>
             Reload Pokes
           </button>
         </div>
-      </nav>
+      </nav> */}
       <div className={`${s.filters}`}>
         <select
           defaultValue={"Alfabetic order"}
@@ -148,7 +149,7 @@ export default function Home() {
             );
           })
         ) : (
-          <h1>Cargando...</h1>
+          <Loading></Loading>
         )}
       </div>
     </div>

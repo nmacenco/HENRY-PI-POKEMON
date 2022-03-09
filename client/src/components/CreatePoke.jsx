@@ -4,6 +4,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { createPoke, getAllTypes } from "../actions";
 import { validate } from "../utils/formValidations";
 
+import s from './styles/CreatePoke.module.css';
+// import pikachuImg from './images/pikachucel.png'
+// import pikachuImg from '../../public/images/pikachucel.png'
+
 
 export default function CreatePoke() {
   const dispatch = useDispatch();
@@ -80,127 +84,164 @@ export default function CreatePoke() {
     });
   }
   return (
-    <div>
-      <NavLink to="/home">Home</NavLink>
-      <h1>Creacion de pokemon</h1>
+    <div className={`${s.create}`}>
 
-      <form onSubmit={(e) => handleSubmit(e)} >
-        <label>Name</label>
-        <input
-          onChange={(e) => handleOnChange(e)}
-          onBlur={(e) => handleOnBlur(e)}
-          name={"name"}
-          type="text"
-          value={input.name}
-          autoFocus
-        />
-        {errors.name  ? <p>{errors.name}</p> : null}
-        <br />
-        <label>Hp</label>
-        <input
-          onBlur={(e) => handleOnBlur(e)}
-          onChange={(e) => handleOnChange(e)}
-          name={"hp"}
-          type="number"
-          value={input.hp}
-        />
-        {errors.hp ? <p>{errors.hp}</p> : null}
-        <br />
-        <label>Attack</label>
-        <input
-          onChange={(e) => handleOnChange(e)}
-          onBlur={(e) => handleOnBlur(e)}
-          name={"attack"}
-          type="number"
-          value={input.attack}
-        />
-        {errors.attack   ? <p>{errors.attack}</p> : null}
-        <br />
-        <label>Defense</label>
-        <input
-          onChange={(e) => handleOnChange(e)}
-          onBlur={(e) => handleOnBlur(e)}
-          name={"defense"}
-          type="number"
-          value={input.defense}
-        />
-        {errors.defense ? <p>{errors.defense}</p> : null}
-        <br />
-        <label>Speed</label>
-        <input
-          onChange={(e) => handleOnChange(e)}
-          onBlur={(e) => handleOnBlur(e)}
-          name={"speed"}
-          type="number"
-          value={input.speed}
-        />
-        {errors.speed ? <p>{errors.speed}</p> : null}
-        <br />
-        <label>Height</label>
-        <input
-          onChange={(e) => handleOnChange(e)}
-          onBlur={(e) => handleOnBlur(e)}
-          name={"height"}
-          type="number"
-          value={input.height}
-        />
-        {errors.height  ? <p>{errors.height}</p> : null}
-        <br />
-        <label>Weight</label>
-        <input
-          onChange={(e) => handleOnChange(e)}
-          onBlur={(e) => handleOnBlur(e)}
-          name={"weight"}
-          type="number"
-          value={input.weight}
-        />
-        {errors.weight  ? <p>{errors.weight}</p> : null}
-        <br />
-        <label>Image</label>
-        <input
-          onChange={(e) => handleOnChange(e)}
-          onBlur={(e) => handleOnBlur(e)}
-          name={"img"}
-          type="url"
-          value={input.img}
-        />
-        {errors.img  ? <p>{errors.img}</p> : null}
-        <br />
-        <label>Type</label>
-        <select
-          name={"types"}
-          defaultValue={""}
-          onChange={(e) => handleSelectType(e)}
-        >
-          <option disabled hidden>
-            {""}
-          </option>
-          {allTypes &&
-            allTypes.map((type) => {
-              return (
-                <option key={type.id} value={type.name}>
-                  {type.name}
+      <div className={`${s.card}`} >
+        <div className={`${s.nameHomeContainer}`}>
+          <NavLink className={`${s.homeButton}`} to="/home">Home</NavLink>
+          <h1>Create your pokemon</h1>
+        </div>
+        <div className={`${s.imgFormContainer}`} >
+          <div className={`${s.pikaImg}`} >
+            <img src={'/images/pikachucel.png'} alt="" />
+          </div>
+          <form className={`${s.form}`}  onSubmit={(e) => handleSubmit(e)} >
+            <div className={`${s.eachStat}`} >
+              <label>Name</label>
+              <input
+                onChange={(e) => handleOnChange(e)}
+                onBlur={(e) => handleOnBlur(e)}
+                name={"name"}
+                type="text"
+                value={input.name}
+                autoFocus
+                />
+            </div>
+            <div className={`${s.eachStat}`}>
+              {errors.name  ? <p className={`${s.danger}`}>{errors.name}</p> : null}
+            </div>
+            <div className={`${s.eachStat}`} >
+              <label>Hp</label>
+              <input
+                onBlur={(e) => handleOnBlur(e)}
+                onChange={(e) => handleOnChange(e)}
+                name={"hp"}
+                type="number"
+                value={input.hp}
+                />
+            </div>
+            <div className={`${s.errorBox}`}>
+              {errors.hp ? <p className={`${s.danger}`}>{errors.hp}</p> : null}
+            </div>
+            <div className={`${s.eachStat}`}>
+              <label>Attack</label>
+              <input
+                onChange={(e) => handleOnChange(e)}
+                onBlur={(e) => handleOnBlur(e)}
+                name={"attack"}
+                type="number"
+                value={input.attack}
+              />
+            </div>
+            <div className={`${s.errorBox}`}>
+              {errors.attack   ? <p className={`${s.danger}`}>{errors.attack}</p> : null}
+            </div>
+            <div className={`${s.eachStat}`}>
+              <label>Defense</label>
+              <input
+                onChange={(e) => handleOnChange(e)}
+                onBlur={(e) => handleOnBlur(e)}
+                name={"defense"}
+                type="number"
+                value={input.defense}
+                />
+            </div>
+            <div className={`${s.errorBox}`}>
+              {errors.defense ? <p className={`${s.danger}`}>{errors.defense}</p> : null}
+            </div>
+            <div className={`${s.eachStat}`}>
+              <label>Speed</label>
+              <input
+                onChange={(e) => handleOnChange(e)}
+                onBlur={(e) => handleOnBlur(e)}
+                name={"speed"}
+                type="number"
+                value={input.speed}
+                />
+            </div>
+            <div className={`${s.errorBox}`}>
+              {errors.speed ? <p className={`${s.danger}`}>{errors.speed}</p> : null}
+            </div>
+            <div className={`${s.eachStat}`}>
+              <label>Height</label>
+              <input
+                onChange={(e) => handleOnChange(e)}
+                onBlur={(e) => handleOnBlur(e)}
+                name={"height"}
+                type="number"
+                value={input.height}
+                />
+            </div>
+            <div className={`${s.errorBox}`}>
+              {errors.height  ? <p className={`${s.danger}`}>{errors.height}</p> : null}
+            </div>
+            <div className={`${s.eachStat}`}>
+              <label>Weight</label>
+              <input
+                onChange={(e) => handleOnChange(e)}
+                onBlur={(e) => handleOnBlur(e)}
+                name={"weight"}
+                type="number"
+                value={input.weight}
+              />
+            </div>
+            <div className={`${s.errorBox}`}>
+              {errors.weight  ? <p className={`${s.danger}`}>{errors.weight}</p> : null}
+            </div>
+            <div className={`${s.eachStat}`}>
+              <label>Image</label>
+              <input
+                onChange={(e) => handleOnChange(e)}
+                onBlur={(e) => handleOnBlur(e)}
+                name={"img"}
+                type="url"
+                value={input.img}
+                />
+            </div>
+            <div className={`${s.errorBox}`}>
+              {errors.img  ? <p className={`${s.danger}`}>{errors.img}</p> : null}
+            </div>
+            <div className={`${s.eachStat}`}>
+
+              <label>Type</label>
+              <select
+                name={"types"}
+                defaultValue={""}
+                onChange={(e) => handleSelectType(e)}
+                >
+                <option disabled hidden>
+                  {""}
                 </option>
-              );
-            })}
-        </select>
-        {input.types.length > 0 &&
-          input.types.map((type, index) => {
-            return (
-              <ul>
-                <li >
-                  {type}
-                  <button key={index} value={type} onClick={(e) => handleOnCLickType(e)}>
-                    X
-                  </button>
-                </li>
-              </ul>
-            );
-          })}
-        <br />
-        <br />
-        <button type="submit">Crear</button>
-      </form>
+                {allTypes &&
+                  allTypes.map((type) => {
+                    return (
+                      <option key={type.id} value={type.name}>
+                        {type.name}
+                      </option>
+                    );
+                  })}
+              </select>
+            </div>
+            <div className={`${s.typeContainer}`}>
+              {input.types.length > 0 &&
+                input.types.map((type, index) => {
+                  return (
+                    <div>
+
+                        {type}
+                        <button className={`${s.typeButton}`} key={index} value={type} onClick={(e) => handleOnCLickType(e)}>
+                          x
+                        </button>
+                    </div>
+                  );
+                })}
+
+            </div>
+
+            <button className={`${s.createButton}`} type="submit">Create</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

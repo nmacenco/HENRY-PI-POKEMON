@@ -3,6 +3,7 @@ import {getPokeById,deletePokeById} from '../actions'
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams,Link} from 'react-router-dom';
 import s from './styles/Detail.module.css';
+import Loading from './Loading';
 export default function Detail () {
     const dispatch = useDispatch();
     const poke = useSelector(state => state.poke)
@@ -78,10 +79,13 @@ export default function Detail () {
                             </div>
                         </div>
                     }
+                </div>
+
+                :
+                <div className={`${s.detail}`}>
+                    <Loading></Loading>
 
                 </div>
-                :
-                <h1>Cargando ...</h1>
 
             }
         </React.Fragment>
