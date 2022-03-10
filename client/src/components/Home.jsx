@@ -79,9 +79,10 @@ export default function Home() {
               />
             );
           })
-        ) : (
+          ) : (
           <Loading></Loading>
-        )}
+          )
+        }
       </div>
     </div>
   );

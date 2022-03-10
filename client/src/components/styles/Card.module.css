@@ -28,7 +28,8 @@
     width: 90%;
     height: 140px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.212);
-    background: #fff;
+    background: rgba(175, 192, 75,0.8);
+    background: rgba(221, 214, 214,0.8);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -53,7 +54,7 @@
     margin-bottom: 5px;
 }
 .type{
-padding: 5px 7px;
+padding: 5px 10px;
 color: white;
 border-radius: 25px;
 }

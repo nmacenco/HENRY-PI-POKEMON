@@ -55,14 +55,23 @@ export default function rootReducer (state=initialState, action) {
  
         case 'FILTER_BY_ORIGIN' :
             const allPokemons = state.copyPokemons ;
-            const statusFiltered = action.payload === 'created' ? allPokemons.filter(poke => poke.createdInDataBase) : allPokemons.filter(poke => !poke.createdInDataBase) 
-            // const statusFiltered = action.payload === 'all' ? allPokemons : allPokemons.filter(poke => 
-            //     (poke.createdInDataBase).toString() === action.payload )
-
-            return {    
-                ...state , 
-                pokemons : action.payload === 'all' ? state.copyPokemons : statusFiltered
-
+            const statusFiltered = action.payload === 'created' ?
+                allPokemons.filter(poke => poke.createdInDataBase) : 
+                (
+                    action.payload === 'all' ?
+                    state.copyPokemons : 
+                    allPokemons.filter(poke => !poke.createdInDataBase) 
+                )
+            if (statusFiltered.length > 0) {
+                return {    
+                    ...state , 
+                    pokemons : statusFiltered 
+                }
+            }else {
+                return {
+                    ...state,
+                    pokeNotFound: true ,
+                };
             }
         case 'FILTER_ASC_DESC' :
             const allPoke = state.copyPokemons ;
@@ -118,9 +127,18 @@ export default function rootReducer (state=initialState, action) {
         case 'FILTER_BY_TYPES' :
             const fullPokes = state.copyPokemons ; 
             const statusFiltereByTypes = fullPokes.filter(poke => poke.types[0]?.name === action.payload || poke.types[1]?.name === action.payload  )
-            return {
-                ...state , 
-                pokemons : statusFiltereByTypes
+
+            if (statusFiltereByTypes.length > 0 ) {
+                return {
+                    ...state , 
+                    pokemons : statusFiltereByTypes
+                }
+            }else {
+                return {
+                    ...state,
+                    pokeNotFound: true ,
+                };
+
             }
         case "POKE_NOT_FOUND":
             return {

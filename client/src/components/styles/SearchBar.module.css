@@ -7,10 +7,13 @@
     padding: 10px 0 10px 0;
 }
 .theForm input { 
-    border: solid 1px grey;
+    border: solid 1px rgba(221, 214, 214,1);
+    background-color: rgba(221, 214, 214,0.8); 
     border-radius: 15px;
     padding-left: 10px;
+    color: black;
 }
+
 
 .theForm button {
     background-color: transparent;

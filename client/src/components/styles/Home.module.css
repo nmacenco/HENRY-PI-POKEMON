@@ -51,7 +51,8 @@
     border-radius: 10px;
     color: #212121;
     z-index: 1;
-    background: #e8e8e8;
+    /* background: #e8e8e8; */
+    /* background: rgba(221, 214, 214,0.8); */
     position: relative;
     font-weight: 1000;
     font-size: 12px;
