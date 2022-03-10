@@ -5,6 +5,7 @@ const initialState = {
     copyPokemons : [],
     types : [] ,
     poke : {} ,
+    pokeNotFound : false , 
 };
 
 export default function rootReducer (state=initialState, action) {
@@ -117,11 +118,21 @@ export default function rootReducer (state=initialState, action) {
         case 'FILTER_BY_TYPES' :
             const fullPokes = state.copyPokemons ; 
             const statusFiltereByTypes = fullPokes.filter(poke => poke.types[0]?.name === action.payload || poke.types[1]?.name === action.payload  )
-            console.log(statusFiltereByTypes);
             return {
                 ...state , 
                 pokemons : statusFiltereByTypes
             }
+        case "POKE_NOT_FOUND":
+            return {
+                ...state,
+                pokeNotFound: action.payload,
+            };
+        
+            case "POKE_NOT_FOUND_RESET":
+            return {
+                ...state,
+                pokeNotFound: action.payload,
+            };
         default :
         return state ; 
     }

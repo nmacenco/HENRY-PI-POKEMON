@@ -10,8 +10,8 @@ export default function Card({ id, img, name, types }) {
         </Link>
         <div className={`${s.types}`}>
           {
-          types.map((type) => (
-            <h5 className={`${s.type}`} >{type.name}</h5>
+          types.map((type, index) => (
+            <h5 key={index} value = {type.name} className={`${s.type}`} >{type.name}</h5>
           ))
           }
         </div>

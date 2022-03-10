@@ -33,7 +33,10 @@ export function getPokeByName (payload) {
                 payload : poke.data
             })
         } catch (error) {
-            console.log(error);
+            return dispatch ({
+                type : 'POKE_NOT_FOUND' ,
+                payload : true , 
+            })
         }
  
     }
@@ -44,7 +47,6 @@ export function getPokeById (id){
          
             if (id.length > 9 ) {
                 const elPoke = await axios.get(`http://localhost:3001/pokemons/${id}`)
-                console.log(elPoke);
                 return dispatch({
                     type : 'GET_POKE_BY_ID',
                     payload : elPoke.data ,
@@ -58,6 +60,10 @@ export function getPokeById (id){
                 })
             }
         } catch (error) {
+            // return dispatch ({
+            //     type : 'POKE_NOT_FOUND' ,
+            //     payload : true , 
+            // })
             console.log(error);
         }
     }
@@ -69,6 +75,12 @@ export function deletePokeById (){
             payload : {} ,
         })
     }
+}
+export function pokeNotFoundReset () {
+    return ({
+        type : "POKE_NOT_FOUND_RESET" ,
+        payload : false , 
+    })
 }
 export function createPoke(payload) {
     return async function () {

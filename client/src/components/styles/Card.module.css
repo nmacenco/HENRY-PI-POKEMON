@@ -24,7 +24,7 @@
 
 .cardName{
     position: relative;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     width: 90%;
     height: 140px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.212);
@@ -42,16 +42,69 @@
     font-weight: 600;
     color: black;
     padding-bottom: 5px;
+    margin-top: 5px;
 }
 .types{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 80%;
     padding: 5px 0;
+    margin-bottom: 5px;
 }
 .type{
-padding: 0 4px;
+padding: 5px 7px;
+color: white;
+border-radius: 25px;
+}
+
+.type[value=grass]{
+    background-color: #5ebd5b ;
+}
+.type[value=fire]{
+    background: #e48621 ;
+}
+.type[value=water]{
+    background-color: #096fc8  ;
+}
+.type[value=ground]{
+    background-color: #c7b78a  ;
+}
+.type[value=electric]{
+    background-color: #f0d84a  ;
+}
+.type[value=flying]{
+    background-color: #ef97e6  ;
+}
+.type[value=poison]{
+    background-color: #7c3c8b  ;
+}
+.type[value=normal]{
+    background-color: #979ba2  ;
+}
+.type[value=psychic]{
+    background-color: #f77676  ;
+}
+.type[value=dragon]{
+    background-color: #d3425f  ;
+}
+.type[value=ice]{
+    background-color: #4f96de  ;
+}
+.type[value=rock]{
+    background-color: #da7b4b  ;
+}
+.type[value=bug]{
+    background-color: #97be2e  ;
+}
+.type[value=ghost]{
+    background-color: #5c6db7  ;
+}
+.type[value=fighting]{
+    background: #db9953  ;
+}
+.type[value=fairy]{
+    background: rgb(244, 217, 208)  ;
 }
 
 @media (min-width: 600px) { 

@@ -37,16 +37,28 @@ export default function Detail () {
                             </div>
                             <div className={`${s.stats}`} >
                                 <h2> {poke.name} </h2>
-                                <p> Hp : {poke.hp} </p>
-                                <p> Attack : {poke.attack} </p>
-                                <p> Defense : {poke.defense} </p>
-                                <p> Speed : {poke.speed} </p>
-                                <p> Weight : {poke.weight} </p>
-                                <p> Height : {poke.height} </p>
+                                <div className={`${s.containers}`} >
+                                    <p className={`${s.statTitle}`}> Hp </p><p> {poke.hp} </p>     
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Attack </p><p> {poke.attack} </p> 
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Defense </p><p> {poke.defense} </p>
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Speed </p><p> {poke.speed} </p>
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Weight </p><p> {poke.weight} </p>
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Height </p><p> {poke.height} </p>
+                                </div>
                                 <p className={`${s.typesTitle}`}>Types </p>
                                 <div className={`${s.typesBox}`}>
                                     {poke.types.map((type,index) => {
-                                        return (<p key={index}>{type.name}</p>)
+                                        return (<p className={`${s.type}`} key = {index} value = {type.name} >{type.name}</p>)
                                     })}
                                 </div>
                             </div>
@@ -61,17 +73,29 @@ export default function Detail () {
                                 <img src={poke.sprites.other.home.front_default} alt="" /> 
                             </div>  
                             <div className={`${s.stats}`}>
-                                <h2> {poke.name.toUpperCase()} </h2>
-                                <p> Hp : {poke.stats[0].base_stat} </p>
-                                <p> Attack : {poke.stats[1].base_stat} </p>
-                                <p> Defense : {poke.stats[2].base_stat} </p>
-                                <p> Speed : {poke.stats[5].base_stat} </p>
-                                <p> Weight : {poke.weight} </p>
-                                <p> Height : {poke.height} </p>
+                        <h2> {poke.name.toUpperCase()} </h2>
+                                <div className={`${s.containers}`} >
+                                    <p className={`${s.statTitle}`}> Hp  </p> <p> {poke.stats[0].base_stat} </p>
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Attack </p><p> {poke.stats[1].base_stat} </p>
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Defense </p><p> {poke.stats[2].base_stat} </p>
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Speed </p><p> {poke.stats[5].base_stat} </p>
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Weight </p><p> {poke.weight} </p>
+                                </div>
+                                <div className={`${s.containers}`}>
+                                    <p className={`${s.statTitle}`}> Height </p><p> {poke.height} </p>
+                                </div>
                                 <p className={`${s.typesTitle}`}>Types </p>
                                 <div className={`${s.typesBox}`}>
                                     {poke.types.map((type,index) => {
-                                        return (<p key={index}>{type.type.name}</p>)
+                                        return (<p className={`${s.type}`} value = {type.type.name} key={index}>{type.type.name}</p>)
                                     })}
 
                                 </div>

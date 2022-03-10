@@ -1,27 +1,28 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {  useNavigate } from "react-router-dom";
 import {
   getAllPokemons,
-  filterByOrigin,
   filterByAscDesc,
   filterByStrength,
   getAllTypes,
-  filterByTypes,
 } from "../actions";
-// import { Link } from "react-router-dom";
+
 
 import Card from "./Card";
 import Paged from "./Paged";
-// import SearchBar from "./SearchBar";
-import s from "./styles/Home.module.css";
 import Loading from "./Loading";
 import Nav from './Nav'
+import Filters from "./Filters";
+
+import s from "./styles/Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons); // lo mismo que hacer el mapstatetoProps
-  const allTypes = useSelector((state) => state.types);
+  const navigate = useNavigate();
+  const pokeNotFound = useSelector (state => state.pokeNotFound) ;
   const [currentPage, setCurrentPage] = useState(1);
   const [pokesPerPage, setPokesPerPage] = useState(12);
   const lastPokeIndex = currentPage * pokesPerPage;
@@ -36,15 +37,6 @@ export default function Home() {
     dispatch(getAllTypes());
   }, []);
 
-  // function handleClick(e) {
-  //   // e.preventDefault();
-  //   dispatch(getAllPokemons());
-  // }
-
-  function handleFilterOrigin(e) {
-    e.preventDefault();
-    dispatch(filterByOrigin(e.target.value));
-  }
   function handleFilterAscDesc(e) {
     e.preventDefault();
     dispatch(filterByAscDesc(e.target.value));
@@ -58,75 +50,11 @@ export default function Home() {
     setCurrentPage(1);
     setOrder(`Ordered ${e.target.value}`);
   }
-  function handleFilterByTypes(e) {
-    e.preventDefault();
-    dispatch(filterByTypes(e.target.value));
-    console.log(e.target.value);
-  }
+
   return (
     <div className={`${s.home}`}>
       <Nav></Nav>
-      {/* <nav>
-        <div className={`${s.searchbar}`}>
-          <SearchBar></SearchBar>
-        </div>
-        <div className={`${s.aboutCreate}`}>
-          <Link className={`${s.about}`} to="/about">
-            About Me
-          </Link>
-          <Link className={`${s.create}`} to="/createPoke">
-            Create Pokemon
-          </Link>
-          <button className={`${s.reload}`} onClick={(e) => handleClick(e)}>
-            Reload Pokes
-          </button>
-        </div>
-      </nav> */}
-      <div className={`${s.filters}`}>
-        <select
-          defaultValue={"Alfabetic order"}
-          onChange={(e) => handleFilterAscDesc(e)}
-        >
-          <option disabled hidden>
-            Alfabetic order
-          </option>
-          <option value="asc">Ascendent</option>
-          <option value="desc">Descendent</option>
-        </select>
-        <select
-          defaultValue={"Atack"}
-          onChange={(e) => handleFilterStrength(e)}
-        >
-          <option disabled hidden>
-            Atack
-          </option>
-          <option value="strong">More</option>
-          <option value="weak">Less</option>
-        </select>
-        <select defaultValue={"Type"} onChange={(e) => handleFilterByTypes(e)}>
-          <option disabled hidden>
-            {" "}
-            Type{" "}
-          </option>
-          {allTypes &&
-            allTypes.map((type) => {
-              return (
-                <option key={type.id} value={`${type.name}`}>
-                  {type.name}
-                </option>
-              );
-            })}
-        </select>
-        <select defaultValue={"Origin"} onChange={(e) => handleFilterOrigin(e)}>
-          <option disabled hidden>
-            {" "}
-            Origin{" "}
-          </option>
-          <option value="all">All</option>
-          <option value={"created"}>Created</option>
-          <option value={"api"}>From Api</option>
-        </select>
-      </div>
+      <Filters handleFilterAscDesc = {handleFilterAscDesc} handleFilterStrength={handleFilterStrength} ></Filters>
       <div>
         <Paged
           allPokemons={allPokemons.length}
@@ -136,7 +64,10 @@ export default function Home() {
       </div>
 
       <div className={`${s.cards}`}>
-        {pokesToRender.length > 0 ? (
+        { pokeNotFound ? 
+          navigate("/404")
+          :
+          pokesToRender.length > 0 ? (
           pokesToRender.map((poke) => {
             return (
               <Card
