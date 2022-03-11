@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   getAllPokemons,
   filterByAscDesc,
@@ -9,11 +9,10 @@ import {
   getAllTypes,
 } from "../actions";
 
-
 import Card from "./Card";
 import Paged from "./Paged";
 import Loading from "./Loading";
-import Nav from './Nav'
+import Nav from "./Nav";
 import Filters from "./Filters";
 
 import s from "./styles/Home.module.css";
@@ -22,12 +21,12 @@ export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons); // lo mismo que hacer el mapstatetoProps
   const navigate = useNavigate();
-  const pokeNotFound = useSelector (state => state.pokeNotFound) ;
+  const pokeNotFound = useSelector((state) => state.pokeNotFound);
   const [currentPage, setCurrentPage] = useState(1);
   const [pokesPerPage, setPokesPerPage] = useState(12);
   const lastPokeIndex = currentPage * pokesPerPage;
   const firstPokeIndex = lastPokeIndex - pokesPerPage;
-  const pokesToRender = allPokemons.slice(firstPokeIndex, lastPokeIndex);
+  const pokesToRender =  allPokemons.slice(firstPokeIndex, lastPokeIndex)  ;
   const [order, setOrder] = useState("");
   const paginado = (pageNum) => {
     setCurrentPage(pageNum);
@@ -54,19 +53,16 @@ export default function Home() {
   return (
     <div className={`${s.home}`}>
       <Nav></Nav>
-      <Filters handleFilterAscDesc = {handleFilterAscDesc} handleFilterStrength={handleFilterStrength} ></Filters>
-      <div>
-        <Paged
-          allPokemons={allPokemons.length}
-          pokesPerPage={pokesPerPage}
-          paginado={paginado}
-        />
-      </div>
+      <Filters
+        handleFilterAscDesc={handleFilterAscDesc}
+        handleFilterStrength={handleFilterStrength}
+      ></Filters>
+
 
       <div className={`${s.cards}`}>
         { pokeNotFound ? 
           navigate("/404")
-          :
+          : 
           pokesToRender.length > 0 ? (
           pokesToRender.map((poke) => {
             return (
@@ -84,6 +80,14 @@ export default function Home() {
           )
         }
       </div>
+      <div>
+        <Paged
+          allPokemons={allPokemons.length}
+          pokesPerPage={pokesPerPage}
+          paginado={paginado}
+        />
+      </div>
+
     </div>
   );
 }

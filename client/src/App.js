@@ -5,13 +5,10 @@ import CreatePoke from './components/CreatePoke.jsx' ;
 import Detail from './components/Detail.jsx' ;
 import Error from './components/Error404.jsx'
 import s from './App.module.css' ;
-import Nav from './components/Nav'
 
 function App() {
   return (
     <div className={`${s.app}`}  >
-        
-
       <Routes>
         <Route exact path = '/' element = {<Layout/>} />
         <Route path = '/home' element = {<Home/>} />
@@ -19,8 +16,8 @@ function App() {
         <Route path = '/createPoke' element = {<CreatePoke/>} />
         <Route path = '/404' element = {<Error/>} />
         <Route path = '/*' element = {<Error/>} />
-
       </Routes> 
+      
     </div>
   );
 }

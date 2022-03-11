@@ -17,20 +17,11 @@ router.get("/", async (req, res) => {
       const pokeName = await totalPokes.filter(
         (element) => element.name.toLowerCase() === qname.toLowerCase()
       );
-      pokeName.length
-        ? res.send(pokeName)
+      pokeName.length > 0 
+        ?  res.send(pokeName)
         : res.status(404).send("Ese pokemon no existe");
         // : console.log('este pokemon no existe')
     } else {
-      // const dataAsked = totalPokes.map((element) => {
-      //   const Poke = {
-      //     id : element.id ,
-      //     name: element.name,
-      //     types: element.types,
-      //     img: element.img,
-      //   };
-      //   return Poke;
-      // });
       res.send(totalPokes);
     }
     

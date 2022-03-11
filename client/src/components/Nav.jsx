@@ -2,7 +2,7 @@ import s from "./styles/Nav.module.css";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import {getAllPokemons} from "../actions";
-  import { useDispatch, useSelector } from "react-redux";
+  import { useDispatch } from "react-redux";
 export default function Nav () {
     const dispatch = useDispatch();
     function handleClick(e) {

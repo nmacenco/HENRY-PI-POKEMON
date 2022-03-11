@@ -8,7 +8,7 @@
     /* border: 1px solid rgba(0, 0, 0, 0.212); */
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     border-radius: 10px;
 }
@@ -33,7 +33,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
 }
 
