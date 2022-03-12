@@ -5,13 +5,11 @@ const getPokesFromApi = async () => {
   const callingApi = await axios.get(
     "https://pokeapi.co/api/v2/pokemon?limit=40"
   );
-  // console.log(callingApi.data.results);
 
   const promeses = callingApi.data.results.map((element) => {
     return axios.get(element.url);
-  });   
+  });
   const arrayPokes = await Promise.all(promeses).then((pokearray) => {
-    // pokearray.forEach(el => console.log({el : el.data.name}))
     const pokeArray = pokearray.map((element) => {
       return {
         id: element.data.id,
@@ -24,20 +22,16 @@ const getPokesFromApi = async () => {
         weight: element.data.weight,
         types: element.data.types.map((element) => element.type),
         img: element.data.sprites.other.home.front_default,
-        // createdInDataBase: 'false',
         createdInDataBase: false,
       };
     });
-    // console.log(pokeArray);
     return pokeArray;
   });
-  // console.log(arrayPokes);
   return arrayPokes;
 };
 
 const getPokesFromDB = async () => {
   const pokes = await Pokemon.findAll({
-    //   include: Type,
     include: {
       model: Type,
       attributes: ["name"],
@@ -55,6 +49,21 @@ const allPokes = async () => {
   return pokesFromApi.concat(pokesFromDB);
 };
 
+const getPokeByID = async (id) => {
+  const poke = await Pokemon.findByPk(id, {
+    include: {
+      model: Type,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
+  return poke;
+};
+
 module.exports = {
   allPokes,
+  getPokesFromDB,
+  getPokeByID,
 };

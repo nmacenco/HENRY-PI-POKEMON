@@ -39,7 +39,7 @@
 
 .name { 
     text-decoration: none;
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 600;
     color: black;
     padding-bottom: 5px;
@@ -115,7 +115,7 @@ border-radius: 25px;
         height: 260px;
     }
     .cardImg { 
-        width: 200px;
+        width: 180px;
         /* height: 190px;    */
     }
     

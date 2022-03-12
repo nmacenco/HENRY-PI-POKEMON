@@ -12,11 +12,7 @@ export default function rootReducer (state=initialState, action) {
    
     switch (action.type) {
         case 'GET_ALL_POKEMONS' :
-           console.log({
-            ...state , 
-            pokemons : action.payload,
-            copyPokemons : action.payload
-             });
+
         return {
             ...state , 
             pokemons : action.payload,
@@ -29,10 +25,25 @@ export default function rootReducer (state=initialState, action) {
                 types : action.payload ,
             }
         case 'GET_POKE_BY_NAME' :
-            return {
-                ...state, 
-                pokemons : action.payload 
+            const thePokes = state.copyPokemons ;
+            const findedPoke = thePokes.filter( element => element.name.toLowerCase() === action.payload.toLowerCase())
+            if (findedPoke.length > 0 ) {
+                return {
+                    ...state, 
+                    pokemons : findedPoke
+                }
+            } else {
+                return {
+                    ...state, 
+                    pokeNotFound : true ,
+                }
+                
             }
+        // case 'GET_POKE_BY_NAME' :
+        //     return {
+        //         ...state, 
+        //         pokemons : action.payload 
+        //     }
         case 'GET_POKE_BY_ID' :
             return {
                 ...state, 

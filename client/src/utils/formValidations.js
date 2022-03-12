@@ -17,18 +17,28 @@ export function validate (input) {
   }
   if (!input.attack) {
     errors.attack = 'Attack is required' ;
+  } else if (Number(input.attack) < 0){
+    errors.attack = `Attack can't be lower than 0`
   } ;
   if (!input.defense) {
     errors.defense = 'Defense is required' ;
+  } else if (Number(input.defense)< 0){
+    errors.defense = `Defense can't be lower than 0`
   } ;
   if (!input.speed) {
     errors.speed = 'Speed is required' ;
+  } else if (Number(input.speed)< 0){
+    errors.speed = `Speed can't be lower than 0`
   } ;
   if (!input.height) {
     errors.height = 'Height is required' ;
+  } else if (Number(input.height)< 0){
+    errors.height = `Height can't be lower than 0`
   } ;
   if (!input.weight) {
     errors.weight = 'Weight is required' ;
+  } else if (Number(input.weight)< 0){
+    errors.weight = `Weight can't be lower than 0`
   } ;
   if (!input.img) {
     errors.img = 'Img is required' ;

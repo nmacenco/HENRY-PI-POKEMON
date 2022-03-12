@@ -70,6 +70,9 @@
 
 .eachStat input {
   width: 60%;
+  /* border: none; */
+  /* background-color: transparent;
+  border-bottom: solid 2px rgba(224, 224, 224, 1); */
 }
 .eachStat select {
   width: 65%;
@@ -101,6 +104,12 @@
   margin-top: 5px;
   display: flex;
   justify-content: center;
+}
+.inputError {
+  border: 1px solid rgb(185, 3, 3);
+}
+.inputOk {
+  border: 1px solid rgb(1, 143, 65);
 }
 .danger {
   color: rgb(185, 3, 3);

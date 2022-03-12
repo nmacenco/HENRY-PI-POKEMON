@@ -5,7 +5,7 @@ import {
   filterByTypes,
 } from "../actions";
 
-import s from "./styles/Home.module.css";
+import s from "./styles/Filters.module.css";
 
 export default function Filters ({handleFilterAscDesc,handleFilterStrength}) {
 // export default function Filters () {

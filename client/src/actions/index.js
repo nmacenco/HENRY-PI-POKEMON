@@ -24,22 +24,26 @@ export function getAllTypes () {
 }
 
 export function getPokeByName (payload) {
-    return async function (dispatch) {
-        try {
-            const poke = await axios.get(`http://localhost:3001/pokemons?qname=${payload}`)
-            // console.log(poke.data);
-            return dispatch( {
+    // return async function (dispatch) {
+    //     try {
+            return ( {
                 type : 'GET_POKE_BY_NAME',
-                payload : poke.data
+                payload 
             })
-        } catch (error) {
-            return dispatch ({
-                type : 'POKE_NOT_FOUND' ,
-                payload : true , 
-            })
-        }
+            // const poke = await axios.get(`http://localhost:3001/pokemons?qname=${payload}`)
+            // // console.log(poke.data);
+            // return dispatch( {
+            //     type : 'GET_POKE_BY_NAME',
+            //     payload : poke.data
+            // })
+        // } catch (error) {
+        //     return dispatch ({
+        //         type : 'POKE_NOT_FOUND' ,
+        //         payload : true , 
+        //     })
+        // }
  
-    }
+    // }
 }
 export function getPokeById (id){
     return async function (dispatch) {

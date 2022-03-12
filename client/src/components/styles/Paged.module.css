@@ -1,7 +1,7 @@
 
 
 .paged{
-   
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -24,7 +24,8 @@
 
 .paged li button{
     position: relative;
-    height: 39px;
+    height: 35px;
+    width: 38px;
     z-index: 100;
     cursor: pointer;
     border-radius: 50%;
@@ -32,22 +33,37 @@
     padding: 5px 10px;
     background-color: transparent;
     font-size: 20px;
-    
-    font-weight: 700; 
+    font-weight: 700;
     color: rgb(0, 0, 0);
-    /* background-color: red;
-    background: linear-gradient(to bottom, rgb(223, 7, 7) 0%, rgb(223, 7, 7) 55%, white 50%, white 100% );
-    */
+    /* background: linear-gradient(to bottom, rgb(184, 5, 5) 0%, rgb(223, 7, 7) 55%, white 50%, white 100% ); */
+    /* background: linear-gradient(to bottom, rgba(184, 5, 5 , 0.8) 0%, rgba(223, 7, 7 , 0.8) 55%, white 50%, white 100% ); */
+    /* background-color: rgba(184, 5, 5 , 0.8); */
+    background-color:rgba(221, 214, 214,0.8);;
+    
+    
+}
+.paged li button[value = '1']::marker{ 
+    
+    background-color: rgba(184, 5, 5 , 0.8);
 
 }
+.paged li button:focus{ 
+    
+    background-color: rgba(184, 5, 5 , 0.8);
+
+}
+
+
+
+
+
+
 .paged li img{
     position: absolute;
     z-index: 1;
-    width: max-content;
-    width: 130px;
-    top: -29px;
-    left: -40px;
-    opacity: 1;
+    width: 40px;
+    border-radius: 50%;
+    opacity: 0.4;
 }
 /* .paged li{
     padding: 0 5px;
@@ -71,12 +87,12 @@
     padding: 5px 10px;
     background-color: transparent;
     font-size: 20px;
-    
-    font-weight: 700; 
+
+    font-weight: 700;
     color: rgb(0, 0, 0);
     background-color: red;
     background: linear-gradient(to bottom, rgb(223, 7, 7) 0%, rgb(223, 7, 7) 55%, white 50%, white 100% );
-   
+
 
 }
 

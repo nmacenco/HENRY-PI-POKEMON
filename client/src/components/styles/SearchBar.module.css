@@ -30,11 +30,11 @@
 
     .theForm input { 
         width: 250px;
-        height: 30px;
+        height: 25px;
         font-size: 15px;
     }
     
     .theForm button img {
-        width: 45px;
+        width: 40px;
     }
 }

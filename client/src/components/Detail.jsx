@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
 import {getPokeById,deletePokeById} from '../actions'
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams,Link} from 'react-router-dom';
+import {useParams,Link , useNavigate} from 'react-router-dom';
 import s from './styles/Detail.module.css';
 import Loading from './Loading';
 export default function Detail () {
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const poke = useSelector(state => state.poke)
     const {id} = useParams()
@@ -15,6 +16,7 @@ export default function Detail () {
     function handleOnClick (e) {
         e.preventDefault()
         dispatch(deletePokeById());
+        navigate('/home')
     }
     
     return (
@@ -29,7 +31,13 @@ export default function Detail () {
                         <div className={`${s.card}`} >
                             <div className={`${s.homeImg}`}>
                                 <div className={`${s.buttonBox}`}>
-                                    <button className={`${s.theButton}`} onClick={(e)=> handleOnClick(e)}><Link className={`${s.link}`} to={'/home'}> Home</Link></button>
+                                <Link className={`${s.link}`} to={'/home'}>
+                                    <button 
+                                    className={`${s.theButton}`} 
+                                    onClick={(e)=> handleOnClick(e)}>
+                                         Home
+                                    </button>
+                                </Link>
                                 </div>
                                 <div className={`${s.circle}`}></div>
                                 <img src={poke.img} alt=""  /> 
@@ -67,7 +75,9 @@ export default function Detail () {
                         <div className={`${s.card}`}>    
                             <div className={`${s.homeImg}`}>
                                 <div className={`${s.buttonBox}`}>
-                                    <button className={`${s.theButton}`} onClick={(e)=> handleOnClick(e)}><Link className={`${s.link}`}  to={'/home'}> Home</Link></button>
+                                <Link className={`${s.link}`}  to={'/home'}> 
+                                    <button className={`${s.theButton}`} onClick={(e)=> handleOnClick(e)}>Home</button>
+                                </Link>
                                 </div>
                                 <div className={`${s.circle}`}></div>
                                 <img src={poke.sprites.other.home.front_default} alt="" /> 

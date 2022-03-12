@@ -84,18 +84,7 @@
    .reload:hover::before {
     width: 100%;
    }
-.filters {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 5px ;
-    border-radius: 3px;
-}
 
-.filters select {
-    margin: 3px 4px;
-    padding: 5px;
-}
 
 .cards {
     position: relative;
@@ -112,9 +101,7 @@
 @media (min-width: 1200px) { 
     
     
-    .home nav {
-        margin-top: 10px;
-    }
+
 
     .aboutCreate{
         justify-content: space-evenly;

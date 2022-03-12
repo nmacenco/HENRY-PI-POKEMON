@@ -28,12 +28,13 @@ export default function Home() {
   const firstPokeIndex = lastPokeIndex - pokesPerPage;
   const pokesToRender =  allPokemons.slice(firstPokeIndex, lastPokeIndex)  ;
   const [order, setOrder] = useState("");
-  const paginado = (pageNum) => {
+  const paged = (pageNum) => {
     setCurrentPage(pageNum);
   };
   useEffect(() => {
-    dispatch(getAllPokemons()); // lo mismo que hacer mapdispatchtoprops
-    dispatch(getAllTypes());
+      dispatch(getAllPokemons()); // lo mismo que hacer mapdispatchtoprops
+      dispatch(getAllTypes());
+
   }, []);
 
   function handleFilterAscDesc(e) {
@@ -84,7 +85,7 @@ export default function Home() {
         <Paged
           allPokemons={allPokemons.length}
           pokesPerPage={pokesPerPage}
-          paginado={paginado}
+          paged={paged}
         />
       </div>
 
