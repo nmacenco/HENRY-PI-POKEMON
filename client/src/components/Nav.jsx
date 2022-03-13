@@ -1,7 +1,7 @@
 import s from "./styles/Nav.module.css";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
-import {getAllPokemons} from "../actions";
+import {getAllPokemons , resetAllPokemons} from "../actions";
   import { useDispatch } from "react-redux";
 
 
@@ -9,6 +9,8 @@ export default function Nav ({setOpenFilters , openFilters }) {
     const dispatch = useDispatch();
     function handleClick(e) {
         // e.preventDefault();
+
+        dispatch(resetAllPokemons());
         dispatch(getAllPokemons());
       }
     return (

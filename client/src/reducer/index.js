@@ -19,6 +19,13 @@ export default function rootReducer (state=initialState, action) {
             copyPokemons : action.payload
             
         }
+        case 'RESET_ALL_POKEMONS' :
+
+        return {
+            ...state , 
+            pokemons : action.payload,
+            
+        }
         case 'GET_ALL_TYPES' :
             return {
                 ...state , 
@@ -67,11 +74,11 @@ export default function rootReducer (state=initialState, action) {
         case 'FILTER_BY_ORIGIN' :
             const allPokemons = state.copyPokemons ;
             const statusFiltered = action.payload === 'created' ?
-                allPokemons.filter(poke => poke.createdInDataBase) : 
+                allPokemons.filter(poke => poke.createdInDataBase === true ) : 
                 (
                     action.payload === 'all' ?
                     state.copyPokemons : 
-                    allPokemons.filter(poke => !poke.createdInDataBase) 
+                    allPokemons.filter(poke => poke.createdInDataBase === false) 
                 )
             if (statusFiltered.length > 0) {
                 return {    

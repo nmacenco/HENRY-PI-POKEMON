@@ -7,7 +7,7 @@ import {
 
 import s from "./styles/Filters.module.css";
 
-export default function Filters ({openFilters,handleFilterAscDesc,handleFilterStrength}) {
+export default function Filters ({setOrder,openFilters,handleFilterAscDesc,handleFilterStrength}) {
 // export default function Filters () {
     const allTypes = useSelector((state) => state.types);
     const dispatch = useDispatch();
@@ -17,12 +17,13 @@ export default function Filters ({openFilters,handleFilterAscDesc,handleFilterSt
     function handleFilterOrigin(e) {
         e.preventDefault();
         dispatch(filterByOrigin(e.target.value));
+        setOrder(`Ordered ${e.target.value}`);
       }
 
       function handleFilterByTypes(e) {
         e.preventDefault();
         dispatch(filterByTypes(e.target.value));
-        console.log(openFilters);
+        setOrder(`Ordered ${e.target.value}`);
 
       }
 

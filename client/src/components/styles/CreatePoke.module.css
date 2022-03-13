@@ -99,7 +99,9 @@
   color: white;
   margin-left: 4px;
 }
-
+#types {
+height: 30px;
+}
 .errorBox {
   margin-top: 5px;
   display: flex;

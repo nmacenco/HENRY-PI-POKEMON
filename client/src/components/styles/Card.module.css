@@ -112,10 +112,12 @@ border-radius: 25px;
     .card {
         margin: 20px 10px;
         width: 230px;
+        width: 200px;
         height: 260px;
     }
     .cardImg { 
         width: 180px;
+        width: 150px;
         /* height: 190px;    */
     }
     

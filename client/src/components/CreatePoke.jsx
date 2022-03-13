@@ -225,6 +225,7 @@ export default function CreatePoke() {
             <div className={`${s.eachStat}`}>
               <label>Type</label>
               <select
+                id= {`${s.types}`}  
                 name={"types"}
                 defaultValue={""}
                 onChange={(e) => handleSelectType(e)}

@@ -22,8 +22,10 @@
 }
 .imgContainer h1 {
     color: white;
-    margin: 25px;
+    margin: 10px;
+    height: 50px;
 }
+
 .theButton {
     cursor: pointer;
     padding: 5px 10px;

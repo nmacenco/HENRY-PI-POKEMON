@@ -113,10 +113,8 @@
     }
     .cards {
         /* border: solid black; */
-        position: relative;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
+        box-sizing: border-box;
+        padding: 0 25px ;
         width: 100%;
     }
     

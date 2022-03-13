@@ -11,6 +11,12 @@ export function getAllPokemons () {
     }
 
 }
+export function resetAllPokemons () {
+    return {
+        type : 'RESET_ALL_POKEMONS' ,
+        payload : [] , 
+    }
+}
 
 export function getAllTypes () {
     return async function (dispatch) {

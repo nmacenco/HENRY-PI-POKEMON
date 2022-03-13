@@ -32,10 +32,10 @@ export default function Home() {
   const paged = (pageNum) => {
     setCurrentPage(pageNum);
   };
-  useEffect(() => {
-    dispatch(getAllPokemons()); // lo mismo que hacer mapdispatchtoprops
-    dispatch(getAllTypes());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getAllPokemons()); // lo mismo que hacer mapdispatchtoprops
+  //   dispatch(getAllTypes());
+  // }, []);
 
   function handleFilterAscDesc(e) {
     e.preventDefault();
@@ -59,6 +59,8 @@ export default function Home() {
            openFilters = {openFilters} setOpenFilters = {setOpenFilters}
           handleFilterAscDesc={handleFilterAscDesc}
           handleFilterStrength={handleFilterStrength}
+          order = { order}
+          setOrder = {setOrder}
         ></Filters>
 
         <div  className={`${s.cardsPageContainer}`} >
