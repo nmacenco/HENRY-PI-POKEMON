@@ -22,6 +22,11 @@
     justify-content: center;
     flex: 1;
 }
+.filterImg {
+    display: none;
+    width: 40px;
+    margin-right: 15px;
+}
 .aboutCreate{
     display: flex;
     justify-content: space-evenly;
@@ -110,12 +115,18 @@
     }
 }
 @media (min-width: 1200px) { 
-
+    
     nav {
         /* background-color: rgba(221, 214, 214,1); */
         padding: 10px 0;
     }
-
+    
+    .filterImg {
+        cursor: pointer;
+        display: block;
+        width: 40px;
+        margin-right: 15px;
+    }
 
     .aboutCreate{
         justify-content: space-evenly;

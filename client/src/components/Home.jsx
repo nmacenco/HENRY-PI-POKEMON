@@ -26,15 +26,15 @@ export default function Home() {
   const [pokesPerPage, setPokesPerPage] = useState(12);
   const lastPokeIndex = currentPage * pokesPerPage;
   const firstPokeIndex = lastPokeIndex - pokesPerPage;
-  const pokesToRender =  allPokemons.slice(firstPokeIndex, lastPokeIndex)  ;
+  const pokesToRender = allPokemons.slice(firstPokeIndex, lastPokeIndex);
   const [order, setOrder] = useState("");
+  const [openFilters , setOpenFilters] = useState(false)
   const paged = (pageNum) => {
     setCurrentPage(pageNum);
   };
   useEffect(() => {
-      dispatch(getAllPokemons()); // lo mismo que hacer mapdispatchtoprops
-      dispatch(getAllTypes());
-
+    dispatch(getAllPokemons()); // lo mismo que hacer mapdispatchtoprops
+    dispatch(getAllTypes());
   }, []);
 
   function handleFilterAscDesc(e) {
@@ -53,42 +53,43 @@ export default function Home() {
 
   return (
     <div className={`${s.home}`}>
-      <Nav></Nav>
-      <Filters
-        handleFilterAscDesc={handleFilterAscDesc}
-        handleFilterStrength={handleFilterStrength}
-      ></Filters>
+      <Nav openFilters = {openFilters} setOpenFilters = {setOpenFilters}></Nav>
+      <div className={`${s.filtersCardContainer}`}>
+        <Filters
+           openFilters = {openFilters} setOpenFilters = {setOpenFilters}
+          handleFilterAscDesc={handleFilterAscDesc}
+          handleFilterStrength={handleFilterStrength}
+        ></Filters>
 
-
-      <div className={`${s.cards}`}>
-        { pokeNotFound ? 
-          navigate("/404")
-          : 
-          pokesToRender.length > 0 ? (
-          pokesToRender.map((poke) => {
-            return (
-              <Card
-                key={poke.id}
-                id={poke.id}
-                name={poke.name}
-                img={poke.img}
-                types={poke.types}
-              />
-            );
-          })
-          ) : (
-          <Loading></Loading>
-          )
-        }
+        <div  className={`${s.cardsPageContainer}`} >
+          <div className={`${s.cards}`}>
+            {pokeNotFound ? (
+              navigate("/404")
+            ) : pokesToRender.length > 0 ? (
+              pokesToRender.map((poke) => {
+                return (
+                  <Card
+                    key={poke.id}
+                    id={poke.id}
+                    name={poke.name}
+                    img={poke.img}
+                    types={poke.types}
+                  />
+                );
+              })
+            ) : (
+              <Loading></Loading>
+            )}
+          </div>
+          <div>
+            <Paged
+              allPokemons={allPokemons.length}
+              pokesPerPage={pokesPerPage}
+              paged={paged}
+            />
+          </div>
+        </div>
       </div>
-      <div>
-        <Paged
-          allPokemons={allPokemons.length}
-          pokesPerPage={pokesPerPage}
-          paged={paged}
-        />
-      </div>
-
     </div>
   );
 }

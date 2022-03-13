@@ -7,7 +7,7 @@ import {
 
 import s from "./styles/Filters.module.css";
 
-export default function Filters ({handleFilterAscDesc,handleFilterStrength}) {
+export default function Filters ({openFilters,handleFilterAscDesc,handleFilterStrength}) {
 // export default function Filters () {
     const allTypes = useSelector((state) => state.types);
     const dispatch = useDispatch();
@@ -22,11 +22,16 @@ export default function Filters ({handleFilterAscDesc,handleFilterStrength}) {
       function handleFilterByTypes(e) {
         e.preventDefault();
         dispatch(filterByTypes(e.target.value));
-        console.log(e.target.value);
+        console.log(openFilters);
+
       }
 
     return (
-        <div className={`${s.filters}`}>
+        <div  className={openFilters  ? `${s.filtersActive}` : `${s.filtersfalse}`} >
+        {/* <div  className={`${s.filterTitle}`} > */}
+          <h2>Filter them! </h2>
+
+        {/* </div> */}
         <select
           defaultValue={"Alfabetic order"}
           onChange={(e) => handleFilterAscDesc(e)}

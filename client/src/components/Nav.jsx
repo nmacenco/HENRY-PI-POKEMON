@@ -3,7 +3,9 @@ import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import {getAllPokemons} from "../actions";
   import { useDispatch } from "react-redux";
-export default function Nav () {
+
+
+export default function Nav ({setOpenFilters , openFilters }) {
     const dispatch = useDispatch();
     function handleClick(e) {
         // e.preventDefault();
@@ -12,6 +14,7 @@ export default function Nav () {
     return (
         <nav>
         <div className={`${s.searchbar}`}>
+          <img className={`${s.filterImg}`} onClick={()=>setOpenFilters(!openFilters)} src="/images/filterimage.svg" alt="pokeball"  />
           <SearchBar></SearchBar>
         </div>
         <div className={`${s.aboutCreate}`}>

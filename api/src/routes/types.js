@@ -7,17 +7,22 @@ const axios = require("axios");
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const apiTypes = await axios.get("https://pokeapi.co/api/v2/type");
-  const types = apiTypes.data.results.map((element) => element.name);
-
-  types.map((element) => {
-    Type.findOrCreate({
-      where: { name: element },
+  try {
+    const apiTypes = await axios.get("https://pokeapi.co/api/v2/type");
+    const types = apiTypes.data.results.map((element) => element.name);
+  
+    types.map((element) => {
+      Type.findOrCreate({
+        where: { name: element },
+      });
     });
-  });
+  
+    const allTypes = await Type.findAll();
+    res.send(allTypes);
+  } catch (error) {
+    console.log(error);
+  }
 
-  const allTypes = await Type.findAll();
-  res.send(allTypes);
   //   res.send('responde')
 });
 
