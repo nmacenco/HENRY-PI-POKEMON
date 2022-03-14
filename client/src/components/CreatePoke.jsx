@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { createPoke, getAllTypes } from "../actions";
+import { createPoke, getAllTypes,filterByOrigin , getAllPokemons} from "../actions";
 import { validate } from "../utils/formValidations";
 
 import s from "./styles/CreatePoke.module.css";
@@ -68,7 +68,9 @@ export default function CreatePoke() {
       dispatch(createPoke(input));
       alert("Pokemon creado con exito");
       // console.log(input);
+      // dispatch(filterByOrigin('all'));
       e.target.reset();
+      dispatch(getAllPokemons());
       navigate("/home");
     }
   }
@@ -81,11 +83,14 @@ export default function CreatePoke() {
       types: input.types.filter((type) => type !== e.target.value),
     });
   }
+  function handleClick(e){
+    dispatch(filterByOrigin('all'));
+  }
   return (
     <div className={`${s.create}`}>
       <div className={`${s.card}`}>
         <div className={`${s.nameHomeContainer}`}>
-          <NavLink className={`${s.homeButton}`} to="/home">
+          <NavLink onClick={(e)=> {handleClick(e)}} className={`${s.homeButton}`} to="/home">
             Home
           </NavLink>
           <h1>Create your pokemon</h1>

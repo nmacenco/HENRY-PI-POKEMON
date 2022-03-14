@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {getPokeById,deletePokeById} from '../actions'
+import {getPokeById,deletePokeById, filterByOrigin} from '../actions'
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams,Link , useNavigate} from 'react-router-dom';
 import s from './styles/Detail.module.css';
@@ -16,6 +16,7 @@ export default function Detail () {
     function handleOnClick (e) {
         e.preventDefault()
         dispatch(deletePokeById());
+        dispatch(filterByOrigin('all'));
         navigate('/home')
     }
     

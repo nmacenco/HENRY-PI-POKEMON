@@ -1,18 +1,19 @@
 
 import React from 'react' ;
 
-// import s from './styles/Loading.module.css' ;
-// className={`${s.container}`}
 import {useDispatch} from 'react-redux'
 import {  useNavigate } from "react-router-dom";
-import {pokeNotFoundReset} from "../actions";
+import {pokeNotFoundReset,filterByOrigin} from "../actions";
 import s from './styles/Error404.module.css'
-export default function Loading (){
+
+
+export default function Error404 (){
     const dispatch = useDispatch()
     const navigate = useNavigate()
     function handleOnClick (e) {
         e.preventDefault() ;
         dispatch(pokeNotFoundReset())
+        dispatch(filterByOrigin('all'))
         navigate('/home')
     }
     return (

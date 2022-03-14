@@ -37,30 +37,19 @@ export default function Home() {
   //   dispatch(getAllTypes());
   // }, []);
 
-  function handleFilterAscDesc(e) {
-    e.preventDefault();
-    dispatch(filterByAscDesc(e.target.value));
-    setCurrentPage(1);
-    setOrder(`Ordered ${e.target.value}`);
-  }
-
-  function handleFilterStrength(e) {
-    e.preventDefault();
-    dispatch(filterByStrength(e.target.value));
-    setCurrentPage(1);
-    setOrder(`Ordered ${e.target.value}`);
-  }
-
   return (
     <div className={`${s.home}`}>
-      <Nav openFilters = {openFilters} setOpenFilters = {setOpenFilters}></Nav>
+      <Nav 
+        setCurrentPage = {setCurrentPage} 
+        openFilters = {openFilters} 
+        setOpenFilters = {setOpenFilters}>
+      </Nav>
+
       <div className={`${s.filtersCardContainer}`}>
         <Filters
-           openFilters = {openFilters} setOpenFilters = {setOpenFilters}
-          handleFilterAscDesc={handleFilterAscDesc}
-          handleFilterStrength={handleFilterStrength}
-          order = { order}
+          openFilters = {openFilters} 
           setOrder = {setOrder}
+          setCurrentPage = {setCurrentPage}
         ></Filters>
 
         <div  className={`${s.cardsPageContainer}`} >
