@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { createPoke, getAllTypes,filterByOrigin , getAllPokemons} from "../actions";
+import { createPoke, getAllTypes,filterByOrigin , getAllPokemons, resetAllPokemons} from "../actions";
 import { validate } from "../utils/formValidations";
 
 import s from "./styles/CreatePoke.module.css";
@@ -68,7 +68,7 @@ export default function CreatePoke() {
       dispatch(createPoke(input));
       alert("Pokemon succesfully created");
       // console.log(input);
-      // dispatch(filterByOrigin('all'));
+      dispatch(filterByOrigin('all'));
       e.target.reset();
       dispatch(getAllPokemons());
       navigate("/home");

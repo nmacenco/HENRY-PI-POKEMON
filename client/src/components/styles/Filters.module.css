@@ -7,7 +7,7 @@
     /* padding: 10px 5px ; */
     border-radius: 3px;
 } 
-h2 {
+.filtersTitle {
     display: none;
 }
 select {

@@ -42,7 +42,7 @@ export default function Filters({ setOrder, openFilters, setCurrentPage }) {
 
   return (
     <div className={openFilters ? `${s.filtersActive}` : `${s.filtersfalse}`}>
-      <h2>Filter them! </h2>
+      <h2 className={ `${s.filtersTitle}` } >Filter them! </h2>
 
       <select
         defaultValue={"Alfabetic order"}

@@ -70,9 +70,9 @@ export default function EditPoke() {
       dispatch(editPoke(input , pokemon.id));
       alert("Pokemon succesfully edited");
       // console.log(input);
-      // dispatch(filterByOrigin('all'));
+      dispatch(filterByOrigin('all'));
       e.target.reset();
-      dispatch(resetAllPokemons())
+      // dispatch(resetAllPokemons())
       dispatch(getAllPokemons());
       navigate("/home");
     }

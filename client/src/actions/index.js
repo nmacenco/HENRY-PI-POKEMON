@@ -3,6 +3,7 @@ import axios from 'axios'
 export function getAllPokemons () {
     return async function (dispatch) {
         const info = await axios.get('http://localhost:3001/pokemons') 
+        console.log(info.data);
         return dispatch( {
             type : 'GET_ALL_POKEMONS' ,
             payload : info.data , 
