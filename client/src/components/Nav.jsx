@@ -5,10 +5,10 @@ import {getAllPokemons , resetAllPokemons , getAllTypes} from "../actions";
   import { useDispatch } from "react-redux";
 
 
-export default function Nav ({setOpenFilters , openFilters , setOrder, setCurrentPage }) {
+export default function Nav ({setOpenFilters , openFilters , setCurrentPage }) {
     const dispatch = useDispatch();
     function handleClick(e) {
-        // e.preventDefault();
+        e.preventDefault();
 
         dispatch(resetAllPokemons());
         dispatch(getAllPokemons());

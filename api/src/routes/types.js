@@ -10,20 +10,17 @@ router.get("/", async (req, res) => {
   try {
     const apiTypes = await axios.get("https://pokeapi.co/api/v2/type");
     const types = apiTypes.data.results.map((element) => element.name);
-  
     types.map((element) => {
       Type.findOrCreate({
         where: { name: element },
       });
     });
-  
+
     const allTypes = await Type.findAll();
     res.send(allTypes);
   } catch (error) {
     console.log(error);
   }
-
-  //   res.send('responde')
 });
 
 // Configurar los routers

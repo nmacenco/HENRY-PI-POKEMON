@@ -54,14 +54,53 @@
 }
     
 .buttonBox {
-    padding-top: 10px;
+    /* border: solid black; */
+    /* padding-top: 10px; */
     width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
     
 }
+
 .theButton{ 
     margin-left: 0;
     text-decoration: none;
     
+}
+.deleteEditBox{
+    /* border: solid black; */
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.deleteButton {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: unset;
+    border-radius: 10px;
+    color: #212121;
+    z-index: 1;
+    background: #bb1d1d;
+    position: relative;
+    font-weight: 1000;
+    font-size: 12px;
+    transition: all 500ms;
+    overflow: hidden;
+}
+.editButton{
+    cursor: pointer;
+    padding: 5px 10px;
+    border: unset;
+    border-radius: 10px;
+    color: #212121;
+    z-index: 1;
+    background: #0eb429;
+    position: relative;
+    font-weight: 1000;
+    font-size: 12px;
+    transition: all 500ms;
+    overflow: hidden;
 }
 .link {
     text-decoration: none;
@@ -78,8 +117,6 @@
     position: relative;
     font-weight: 1000;
     font-size: 12px;
-    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     transition: all 500ms;
     overflow: hidden;
    }

@@ -70,10 +70,6 @@ export function getPokeById (id){
                 })
             }
         } catch (error) {
-            // return dispatch ({
-            //     type : 'POKE_NOT_FOUND' ,
-            //     payload : true , 
-            // })
             console.log(error);
         }
     }
@@ -99,7 +95,25 @@ export function createPoke(payload) {
         
     }
 }
+export function deletePoke (id) {
+    return async function () {
+        await axios.delete(`http://localhost:3001/pokemons/delete/${id}`)
+        return {
+            type : 'DELETE_POKE' , 
+            payload : 'pokemon eliminado'
+        }
+    }
+}
 
+export function editPoke (poke, id ) {
+    return async function () {
+        const updated = await axios.put(`http://localhost:3001/pokemons/edit/${id}`, poke ) ;
+        return {
+            type : 'UPDATE_POKE',
+            payload : updated , 
+        }
+    }
+}
 
 export function filterByOrigin (payload) {
     return {

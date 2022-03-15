@@ -70,6 +70,15 @@ export default function rootReducer (state=initialState, action) {
                
             }
         
+        case 'DELETE_POKE' :
+            return {
+                ...state 
+            }
+ 
+        case 'UPDATE_POKE' :
+            return {
+                ...state 
+            }
  
         case 'FILTER_BY_ORIGIN' :
             const allPokemons = state.copyPokemons ;

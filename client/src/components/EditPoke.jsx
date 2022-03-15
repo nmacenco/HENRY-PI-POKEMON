@@ -1,42 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { createPoke, getAllTypes,filterByOrigin , getAllPokemons} from "../actions";
+import { editPoke, getAllTypes,filterByOrigin ,resetAllPokemons, getAllPokemons} from "../actions";
 import { validate } from "../utils/formValidations";
 
 import s from "./styles/CreatePoke.module.css";
 // import pikachuImg from './images/pikachucel.png'
 // import pikachuImg from '../../public/images/pikachucel.png'
 
-export default function CreatePoke() {
+export default function EditPoke() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const allTypes = useSelector((state) => state.types);
-
+  const pokemon = useSelector(state => state.poke)
+  // const [render, setRender] = useState("");
   const [input, setInput] = useState({
-    name: "",
-    hp: "",
-    attack: "",
-    defense: "",
-    speed: "",
-    height: "",
-    weight: "",
-    img: "",
-    types: [],
+   
+      name : `${pokemon.name} `, 
+      hp: `${pokemon.hp}`,
+      attack: `${pokemon.attack}`,
+      defense: `${pokemon.defense}`,
+      speed: `${pokemon.speed}`,
+      height: `${pokemon.height}`,
+      weight: `${pokemon.weight}`,
+      img: `${pokemon.img}`,
+      types:  pokemon.types.map(el =>`${el.name}`) ,
+    
   });
   let [errors, setErrors] = useState({});
-
+  
   useEffect(() => {
     dispatch(getAllTypes());
-  }, [dispatch]);
 
+  }, [dispatch]);
+  
   function handleOnChange(e) {
     e.preventDefault();
     setInput((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
-    // console.log({input : input});
   }
   function handleOnBlur(e) {
     setErrors(
@@ -45,7 +48,6 @@ export default function CreatePoke() {
         [e.target.name]: e.target.value,
       })
     );
-    // console.log({ errors });
     // console.log((e.target.value));
   }
 
@@ -65,11 +67,12 @@ export default function CreatePoke() {
       e.preventDefault();
       alert("All fields are required");
     } else {
-      dispatch(createPoke(input));
-      alert("Pokemon succesfully created");
+      dispatch(editPoke(input , pokemon.id));
+      alert("Pokemon succesfully edited");
       // console.log(input);
       // dispatch(filterByOrigin('all'));
       e.target.reset();
+      dispatch(resetAllPokemons())
       dispatch(getAllPokemons());
       navigate("/home");
     }
@@ -93,7 +96,7 @@ export default function CreatePoke() {
           <NavLink onClick={(e)=> {handleClick(e)}} className={`${s.homeButton}`} to="/home">
             Home
           </NavLink>
-          <h1>Create your pokemon</h1>
+          <h1>Edit your pokemon</h1>
         </div>
         <div className={`${s.imgFormContainer}`}>
           <div className={`${s.pikaImg}`}>
@@ -268,7 +271,7 @@ export default function CreatePoke() {
             </div>
 
             <button className={`${s.createButton}`} type="submit">
-              Create
+              Edit
             </button>
           </form>
         </div>

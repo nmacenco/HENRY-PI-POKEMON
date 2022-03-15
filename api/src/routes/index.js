@@ -29,7 +29,7 @@ router.get("/:idPokemon", async (req, res) => {
   if (idPokemon.length > 9) {
     try {
       const pokeName = await getPokeByID(idPokemon);
-      console.log(pokeName.pokemon);
+      // console.log(pokeName.pokemon);
       pokeName
         ? res.json(pokeName)
         : res.status(404).send("Ese pokemon no existe");
@@ -55,10 +55,59 @@ router.post("/", async (req, res) => {
   const typeDB = await Type.findAll({
     where: { name: types },
   });
-  // console.log(typeDB);
   await createdPoke.addType(typeDB);
+  // console.log(createdPoke);
   res.send(createdPoke);
 });
+
+router.put('/edit/:id' , async (req, res) => {
+  const {id} = req.params ;
+  const { name, hp, attack, defense, speed, height, weight, types, img } =
+  req.body;
+
+  try {
+    const editedPoke = await Pokemon.update({
+      name,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+      img,
+    },
+    {
+        where: 
+        {
+            id : id
+        }
+    });
+    const typeDB = await Type.findAll({
+      where: { name: types },
+    });
+    const editPoke = await Pokemon.findByPk(id)
+    // res.send(typeDB)
+
+    await editPoke.setTypes(typeDB);
+    // await editPoke.addType(typeDB);
+    console.log(editedPoke);
+    res.send(editPoke);
+  } catch (error) {
+    console.log(error);
+  }
+
+})
+
+router.delete('/delete/:id' , async (req, res) => {
+  const {id} = req.params ; 
+  try {
+    const poke = await Pokemon.findByPk (id)
+    await Pokemon.destroy({ where : {id:id}})
+    res.send ('se elimino el pokemon')
+  } catch (error) {
+    console.log(error);
+  }
+})
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
