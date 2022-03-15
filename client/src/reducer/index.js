@@ -101,7 +101,7 @@ export default function rootReducer (state=initialState, action) {
                 };
             }
         case 'FILTER_ASC_DESC' :
-            const allPoke = state.pokemons ;
+            const allPoke = state.copyPokemons ;
             let statusAscDesc = [];
                 if ( action.payload === 'asc') 
                 statusAscDesc = allPoke.sort(function (a,b) {

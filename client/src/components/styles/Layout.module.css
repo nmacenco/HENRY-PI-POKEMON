@@ -26,7 +26,7 @@
 }
 .link {
 position: absolute;
-left: calc( (100vw - 120px)/2);
+left: calc( (100vw - 145px)/2);
 bottom: 40vh;
 border-radius: 15px;
 cursor: pointer;
@@ -99,7 +99,7 @@ width: 170px; */
         left: calc( (100vw - 430px)/2);
     }
     .link {
-        left: calc( (100vw - 130px)/2);
+        left: calc( (100vw - 170px)/2);
         bottom: 30vh;
 
     }
@@ -122,7 +122,7 @@ width: 170px; */
 }
 @media (min-width: 1200px) {
     .link {
-        left: calc( (100vw - 130px)/2);
+        left: calc( (100vw - 170px)/2);
         bottom: 20vh;
 
     }
@@ -141,7 +141,7 @@ width: 170px; */
     }
     .link {
         position: absolute;
-        left: calc( (100vw - 140px)/2);
+        left: calc( (100vw - 175px)/2);
         bottom: 25vh;
     }
 }

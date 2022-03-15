@@ -25,7 +25,7 @@ export default function Landing () {
             </div>
                     <Link className={`${s.link}`}   to = '/home'>
                         <button className={`${s.layoutButton}`} >
-                                Ingresar 
+                                Get started!!  
                         </button>
                     </Link>
         </div>
