@@ -17,14 +17,12 @@ export default function Filters({ setOrder, openFilters, setCurrentPage }) {
     e.preventDefault();
     dispatch(filterByOrigin(e.target.value));
     setCurrentPage(1);
-    // setOrder(`Ordered ${e.target.value}`);
   }
 
   function handleFilterByTypes(e) {
     e.preventDefault();
     dispatch(filterByTypes(e.target.value));
     setCurrentPage(1);
-    // setOrder(`Ordered ${e.target.value}`);
   }
   function handleFilterAscDesc(e) {
     e.preventDefault();

@@ -8,7 +8,7 @@ import s from './styles/Layout.module.css'
 export default function Landing () {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getAllPokemons()); // lo mismo que hacer mapdispatchtoprops
+        dispatch(getAllPokemons()); 
         dispatch(getAllTypes())
         console.log('se despacharon las acciones');
       }, [dispatch]);

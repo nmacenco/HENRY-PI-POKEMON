@@ -9,11 +9,9 @@ export default function Nav ({setOpenFilters , openFilters , setCurrentPage }) {
     const dispatch = useDispatch();
     function handleClick(e) {
         e.preventDefault();
-
         dispatch(resetAllPokemons());
         dispatch(getAllPokemons());
         dispatch(getAllTypes());
-
       }
     return (
         <nav>

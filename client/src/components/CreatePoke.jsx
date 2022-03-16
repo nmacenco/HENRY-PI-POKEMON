@@ -5,8 +5,7 @@ import { createPoke, getAllTypes,filterByOrigin , getAllPokemons, resetAllPokemo
 import { validate } from "../utils/formValidations";
 
 import s from "./styles/CreatePoke.module.css";
-// import pikachuImg from './images/pikachucel.png'
-// import pikachuImg from '../../public/images/pikachucel.png'
+
 
 export default function CreatePoke() {
   const dispatch = useDispatch();
@@ -36,7 +35,6 @@ export default function CreatePoke() {
       ...prev,
       [e.target.name]: e.target.value,
     }));
-    // console.log({input : input});
   }
   function handleOnBlur(e) {
     setErrors(
@@ -45,8 +43,6 @@ export default function CreatePoke() {
         [e.target.name]: e.target.value,
       })
     );
-    // console.log({ errors });
-    // console.log((e.target.value));
   }
 
   function handleSelectType(e) {
@@ -67,7 +63,6 @@ export default function CreatePoke() {
     } else {
       dispatch(createPoke(input));
       alert("Pokemon succesfully created");
-      // console.log(input);
       dispatch(filterByOrigin('all'));
       e.target.reset();
       dispatch(getAllPokemons());
@@ -76,8 +71,6 @@ export default function CreatePoke() {
   }
   function handleOnCLickType(e) {
     e.preventDefault();
-    // console.log(errors);
-    // console.log(e.target.value);
     setInput({
       ...input,
       types: input.types.filter((type) => type !== e.target.value),

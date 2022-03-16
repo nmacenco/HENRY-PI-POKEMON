@@ -16,7 +16,6 @@ function App() {
         <Route path = '/detail/:id' element = {<Detail/>} />
         <Route path = '/createPoke' element = {<CreatePoke/>} />
         <Route path = '/editPoke' element = {<EditPoke/>} />
-
         <Route path = '/404' element = {<Error/>} />
         <Route path = '/*' element = {<Error/>} />
       </Routes> 

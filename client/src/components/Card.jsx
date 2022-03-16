@@ -7,7 +7,6 @@ export default function Card({ id, img, name, types }) {
       <div className={`${s.cardName}`}>
         <Link className={`${s.name}`} to={`/detail/${id}`}>
           {name.toUpperCase()}
-          {/* {name} */}
         </Link>
         <div className={`${s.types}`}>
           {

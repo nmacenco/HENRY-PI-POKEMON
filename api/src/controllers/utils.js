@@ -57,7 +57,7 @@ const allPokes = async () => {
   try {
     const pokesFromApi = await getPokesFromApi();
     const pokesFromDB = await getPokesFromDB();
-    return pokesFromApi.concat(pokesFromDB);
+    return [...pokesFromApi , ...pokesFromDB];
   } catch (error) {
     console.log(error);
   }

@@ -53,7 +53,7 @@ export default function Detail () {
                                     <button 
                                     className={`${s.theButton}`} 
                                     onClick={(e)=> handleOnClick(e)}>
-                                         Home
+                                            Home
                                     </button>
                                 </Link>
                                 <div className={`${s.deleteEditBox}`}>

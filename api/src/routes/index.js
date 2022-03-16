@@ -10,11 +10,12 @@ router.get("/", async (req, res) => {
   const totalPokes = await allPokes();
   try {
     if (qname) {
-      const pokeName = await totalPokes.filter(
+      const pokeName = await totalPokes.find(
         (element) => element.name.toLowerCase() === qname.toLowerCase()
       );
-      pokeName.length > 0
-        ? res.send(pokeName)
+      const answer = [pokeName] ;
+      pokeName
+        ? res.send(answer)
         : res.status(404).send("Ese pokemon no existe");
     } else {
       res.send(totalPokes);
@@ -29,7 +30,6 @@ router.get("/:idPokemon", async (req, res) => {
   if (idPokemon.length > 9) {
     try {
       const pokeName = await getPokeByID(idPokemon);
-      // console.log(pokeName.pokemon);
       pokeName
         ? res.json(pokeName)
         : res.status(404).send("Ese pokemon no existe");
@@ -56,7 +56,6 @@ router.post("/", async (req, res) => {
     where: { name: types },
   });
   await createdPoke.addType(typeDB);
-  // console.log(createdPoke);
   res.send(createdPoke);
 });
 
@@ -66,7 +65,7 @@ router.put('/edit/:id' , async (req, res) => {
   req.body;
 
   try {
-    const editedPoke = await Pokemon.update({
+    await Pokemon.update({
       name,
       hp,
       attack,
@@ -86,11 +85,9 @@ router.put('/edit/:id' , async (req, res) => {
       where: { name: types },
     });
     const editPoke = await Pokemon.findByPk(id)
-    // res.send(typeDB)
 
     await editPoke.setTypes(typeDB);
-    // await editPoke.addType(typeDB);
-    console.log(editedPoke);
+
     res.send(editPoke);
   } catch (error) {
     console.log(error);
@@ -101,7 +98,6 @@ router.put('/edit/:id' , async (req, res) => {
 router.delete('/delete/:id' , async (req, res) => {
   const {id} = req.params ; 
   try {
-    const poke = await Pokemon.findByPk (id)
     await Pokemon.destroy({ where : {id:id}})
     res.send ('se elimino el pokemon')
   } catch (error) {
@@ -113,14 +109,4 @@ router.delete('/delete/:id' , async (req, res) => {
 
 module.exports = router;
 
-// modelo para post
-// {"name": "mora",
-//  "hp": "120",
-//  "attack": "450",
-//  "defense": "600",
-//  "speed": "430",
-//  "height": "4",
-//  "weight": "10",
-//  "types": ["ice" , "water"],
-//  "img": "url"
-// }
+

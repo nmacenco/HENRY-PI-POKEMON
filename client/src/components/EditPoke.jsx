@@ -5,17 +5,13 @@ import { editPoke, getAllTypes,filterByOrigin ,resetAllPokemons, getAllPokemons}
 import { validate } from "../utils/formValidations";
 
 import s from "./styles/CreatePoke.module.css";
-// import pikachuImg from './images/pikachucel.png'
-// import pikachuImg from '../../public/images/pikachucel.png'
 
 export default function EditPoke() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const allTypes = useSelector((state) => state.types);
   const pokemon = useSelector(state => state.poke)
-  // const [render, setRender] = useState("");
   const [input, setInput] = useState({
-   
       name : `${pokemon.name} `, 
       hp: `${pokemon.hp}`,
       attack: `${pokemon.attack}`,
@@ -25,7 +21,6 @@ export default function EditPoke() {
       weight: `${pokemon.weight}`,
       img: `${pokemon.img}`,
       types:  pokemon.types.map(el =>`${el.name}`) ,
-    
   });
   let [errors, setErrors] = useState({});
   
@@ -48,7 +43,6 @@ export default function EditPoke() {
         [e.target.name]: e.target.value,
       })
     );
-    // console.log((e.target.value));
   }
 
   function handleSelectType(e) {
@@ -69,18 +63,14 @@ export default function EditPoke() {
     } else {
       dispatch(editPoke(input , pokemon.id));
       alert("Pokemon succesfully edited");
-      // console.log(input);
       dispatch(filterByOrigin('all'));
       e.target.reset();
-      // dispatch(resetAllPokemons())
       dispatch(getAllPokemons());
       navigate("/home");
     }
   }
   function handleOnCLickType(e) {
     e.preventDefault();
-    // console.log(errors);
-    // console.log(e.target.value);
     setInput({
       ...input,
       types: input.types.filter((type) => type !== e.target.value),

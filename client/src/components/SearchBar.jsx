@@ -11,13 +11,13 @@ export default function SearchBar({ setCurrentPage}) {
   function handleInputChange (e) {
         e.preventDefault()
         setInput(e.target.value)
-    }
-    function handleSubmit (e) {
-        e.preventDefault()
-        dispatch(getPokeByName(input))
-        setCurrentPage(1);
-        e.target.reset()
-    }
+  }
+  function handleSubmit (e) {
+      e.preventDefault()
+      dispatch(getPokeByName(input))
+      setCurrentPage(1);
+      e.target.reset()
+  }
     return (
       <form className= {`${s.theForm}`} onSubmit={(e)=> handleSubmit(e)}>
         <input 
