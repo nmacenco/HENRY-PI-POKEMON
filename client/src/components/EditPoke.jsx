@@ -47,13 +47,17 @@ export default function EditPoke() {
 
   function handleSelectType(e) {
     e.preventDefault();
-    if (input.types.length < 2) {
-      setInput({
-        ...input,
-        types: [...input.types, e.target.value],
-      });
+    if (!input.types.includes(e.target.value)) {
+      if (input.types.length < 2 ) {
+        setInput({
+          ...input,
+          types: [...input.types, e.target.value],
+        });
+      } else {
+        alert("Maximum two types of pokemons");
+      }
     } else {
-      alert("Maximum two types of pokemons");
+      alert("The type can not be repeted");
     }
   }
   function handleSubmit(e) {

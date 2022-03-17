@@ -47,13 +47,18 @@ export default function CreatePoke() {
 
   function handleSelectType(e) {
     e.preventDefault();
-    if (input.types.length < 2) {
-      setInput({
-        ...input,
-        types: [...input.types, e.target.value],
-      });
+    
+    if (!input.types.includes(e.target.value)) {
+      if (input.types.length < 2 ) {
+        setInput({
+          ...input,
+          types: [...input.types, e.target.value],
+        });
+      } else {
+        alert("Maximum two types of pokemons");
+      }
     } else {
-      alert("Maximum two types of pokemons");
+      alert("The type can not be repeted");
     }
   }
   function handleSubmit(e) {
@@ -226,7 +231,7 @@ export default function CreatePoke() {
                 id= {`${s.types}`}  
                 name={"types"}
                 defaultValue={""}
-                onChange={(e) => handleSelectType(e)}
+                onChange={(e) => handleSelectType(e) }
               >
                 <option disabled hidden>
                   {""}

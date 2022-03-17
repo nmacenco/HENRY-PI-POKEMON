@@ -86,7 +86,7 @@ export default function rootReducer(state = initialState, action) {
         };
       }
     case "FILTER_ASC_DESC":
-      const allPoke = state.copyPokemons;
+      const allPoke = state.pokemons;
       let statusAscDesc = [];
       if (action.payload === "asc")
         statusAscDesc = allPoke.sort(function (a, b) {
@@ -111,7 +111,7 @@ export default function rootReducer(state = initialState, action) {
         pokemons: statusAscDesc,
       };
     case "FILTER_BY_STRENGTH":
-      const allPokes = state.copyPokemons;
+      const allPokes = state.pokemons;
       let statusStrength = [];
       if (action.payload === "weak")
         statusStrength = allPokes.sort(function (a, b) {

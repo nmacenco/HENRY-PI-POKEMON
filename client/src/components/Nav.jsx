@@ -12,6 +12,7 @@ export default function Nav ({setOpenFilters , openFilters , setCurrentPage }) {
         dispatch(resetAllPokemons());
         dispatch(getAllPokemons());
         dispatch(getAllTypes());
+        setCurrentPage(1)
       }
     return (
         <nav>
