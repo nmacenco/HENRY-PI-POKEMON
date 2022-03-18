@@ -26,7 +26,7 @@
 }
 .link {
 position: absolute;
-left: calc( (100vw - 145px)/2);
+left: calc( (100vw - 140px)/2);
 bottom: 40vh;
 border-radius: 15px;
 cursor: pointer;
