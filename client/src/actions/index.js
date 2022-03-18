@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function getAllPokemons() {
   return async function (dispatch) {
-    const info = await axios.get("http://localhost:3001/pokemons");
+    const info = await axios.get("/pokemons");
     return dispatch({
       type: "GET_ALL_POKEMONS",
       payload: info.data,
@@ -18,7 +18,7 @@ export function resetAllPokemons() {
 
 export function getAllTypes() {
   return async function (dispatch) {
-    const data = await axios.get("http://localhost:3001/types");
+    const data = await axios.get("/types");
     return dispatch({
       type: "GET_ALL_TYPES",
       payload: data.data,
@@ -36,7 +36,7 @@ export function getPokeById(id) {
   return async function (dispatch) {
     try {
       if (id.length > 9) {
-        const elPoke = await axios.get(`http://localhost:3001/pokemons/${id}`);
+        const elPoke = await axios.get(`/pokemons/${id}`);
         return dispatch({
           type: "GET_POKE_BY_ID",
           payload: elPoke.data,
@@ -71,13 +71,13 @@ export function pokeNotFoundReset() {
 }
 export function createPoke(payload) {
   return async function () {
-    const newPoke = await axios.post("http://localhost:3001/pokemons", payload);
+    const newPoke = await axios.post("/pokemons", payload);
     return newPoke;
   };
 }
 export function deletePoke(id) {
   return async function () {
-    await axios.delete(`http://localhost:3001/pokemons/delete/${id}`);
+    await axios.delete(`/pokemons/delete/${id}`);
     return {
       type: "DELETE_POKE",
       payload: "pokemon eliminado",
@@ -88,7 +88,7 @@ export function deletePoke(id) {
 export function editPoke(poke, id) {
   return async function () {
     const updated = await axios.put(
-      `http://localhost:3001/pokemons/edit/${id}`,
+      `/pokemons/edit/${id}`,
       poke
     );
     return {
