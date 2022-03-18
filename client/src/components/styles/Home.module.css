@@ -84,7 +84,12 @@
    .reload:hover::before {
     width: 100%;
    }
-
+   .filtersCardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
    .cardsPageContainer{
        width: 100%;
    }
@@ -104,15 +109,12 @@
     
     
     .filtersCardContainer {
-        /* border: solid black; */
         display: flex;
+        flex-direction: row;
         width: 100vw;
-        /* height: 100vh; */
         align-items: flex-start;
-        /* justify-content: space-around; */
     }
     .cards {
-        /* border: solid black; */
         box-sizing: border-box;
         padding: 0 25px ;
         width: 100%;
