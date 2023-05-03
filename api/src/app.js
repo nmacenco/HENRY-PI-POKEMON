@@ -11,7 +11,9 @@ const server = express();
 
 server.name = 'API';
 
-server.use(cors())
+server.use(cors({
+  origin: 'https://henry-pi-pokemon.vercel.app'
+}))
 server.use(express.json({extended: false})); // lo agregue yo 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
