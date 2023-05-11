@@ -16,17 +16,17 @@ Video : https://www.linkedin.com/feed/update/urn:li:activity:6910586993676558336
 URL : https://henry-pi-pokemon.vercel.app/ 
 
 
-##Project Objectives<br>
+### Project Objectives
 Build an app using React, Redux, Node, and Sequelize.
 Apply and connect the concepts learned during the course.
 Learn and apply best practices.
 Learn and practice the GIT workflow.
 Use and practice testing.
 
-##Schedule and Dates<br>
+### Schedule and Dates
 The project will have a maximum duration of three weeks. If you complete all the tasks before this timeframe, you can notify your instructor to coordinate a presentation date for the work (DEMO).
 
-##Getting Started<br>
+### Getting Started
 Fork the repository to have a copy on your accounts.
 Clone the repository to your computers to start working.
 You will have a boilerplate with the general structure of both the server and the client.
@@ -44,7 +44,7 @@ node -v
 
 npm -v
 
-##Boilerplate<br>
+### Boilerplate
 The boilerplate has two folders: api and client. In these folders, you will find the backend and frontend code, respectively.
 
 In the api folder, create a file named: .env with the following format:
@@ -59,7 +59,7 @@ Additionally, you will need to create a database named "pokemon" using psql.
 
 The content of the client folder was created using Create React App.
 
-##Project Statement
+### Project Statement
 The general idea is to create an application where you can view different Pokemon using the external pokeapi and, based on it, perform the following actions, among others:
 
 Search for Pokemon
@@ -74,7 +74,7 @@ GET https://pokeapi.co/api/v2/pokemon/{id}
 GET https://pokeapi.co/api/v2/pokemon/{name}
 GET https://pokeapi.co/api/v2/type
 
-##Minimum Requirements:<br>
+### Minimum Requirements:
 The following are the minimum requirements for the individual project approval. If you want to add more functionalities, you are welcome to do so. Regarding visual design, there won't be predefined wireframes or prototypes, but you have the freedom to design it according to your taste, while applying the styling concepts seen in the course to make it visually pleasing.
 
 IMPORTANT: External libraries are not allowed for applying styles to the application. You have to use CSS with some of the options we have seen in class (pure CSS, CSS Modules, or Styled Components).
@@ -85,7 +85,7 @@ Redux
 Express
 Sequelize - Postgres
 
-###Frontend:<br>
+### Frontend:
 You must develop a React/Redux application with the following screens/routes.
 
 Home Page: Create a landing page with:
@@ -118,7 +118,7 @@ The ability to select/add more than one type of pokemon.
 A button/option to create a new pokemon.
 It is required that the creation form be validated with JavaScript, not just HTML validations. You can add the validations you consider necessary, such as disallowing numeric characters in the Pokemon's name or setting a maximum value for the height, etc.
 
-###Database:<br>
+### Database:
 The database model should have the following entities (properties marked with an asterisk are mandatory):
 
 Pokemon with the following properties:
@@ -137,7 +137,7 @@ The relationship between these entities should be many-to-many since a pokemon c
 
 IMPORTANT: Consider how to model the IDs of the pokemons in the database. There are different correct ways to do it, but keep in mind that when you click on a pokemon, it can come from the API or from the database. When displaying its details, there should be no ambiguity about which one should be shown. For example, if in the API the pokemon Bulbasaur has id = 1 and in our database, we create a new pokemon named Henry with id = 1, find a way to differentiate them when accessing their details.
 
-###Backend:<br>
+### Backend:
 You need to develop a Node/Express server with the following routes:
 
 IMPORTANT: You are not allowed to use the filtering, sorting, and pagination provided by the external API. You need to implement these functionalities yourself.
@@ -164,7 +164,7 @@ GET /types:
 Get all possible pokemon types.
 Initially, you should fetch them from pokeapi and save them in your own database, and then use them from there.
 
-###Testing:<br>
+### Testing:
 
 Have at least one frontend component with its respective tests.
 Have at least one backend route with its respective tests.
